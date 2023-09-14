@@ -7,14 +7,6 @@ public class MathProblemAnswer : MonoBehaviour
 {
     public TMP_InputField input;
 
-    public MathProblemGenerator currentAnswer;
- 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -29,7 +21,7 @@ public class MathProblemAnswer : MonoBehaviour
     {
         string playerInput = input.text;
         Debug.Log("test");
-        if (playerInput.Equals(currentAnswer.GetOperationsAnswersString()))
+        if (playerInput.Equals(MathProblemGenerator.GetOperationsAnswersString()))
         {
             Debug.Log("yippe");
         }

@@ -4,35 +4,33 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class MathProblemGenerator : MonoBehaviour
+public static class MathProblemGenerator
 {
-    private int randomNumberOne;
-    private int randomNumberTwo;
+    private static int randomNumberOne;
+    private static int randomNumberTwo;
 
-    public string[] randomSymbol;
-    private int symbolIndex;
+    public static string[] randomSymbol = { " + ", " - ", " * ", " / " };
 
-    public TMP_Text numOne;
-    public TMP_Text numTwo;
-    public TMP_Text symbol;
-    
+    public static int symbolIndex;
+
+    public static string MathProblem;
 
     // Start is called before the first frame update
-    void Start()
+
+    public static void GenerateMathProblem()
     {
         randomNumberOne = UnityEngine.Random.Range(0, 30);
         randomNumberTwo = UnityEngine.Random.Range(0, 30);
-        symbolIndex = UnityEngine.Random.Range(0, randomSymbol.Length - 1);
 
-        numOne.SetText(randomNumberOne.ToString());
-        numTwo.SetText(randomNumberTwo.ToString());
-        symbol.SetText(randomSymbol[symbolIndex].ToString());
+        MathProblem = (randomNumberOne.ToString());
+        MathProblem += (randomSymbol[symbolIndex].ToString());
+        MathProblem += (randomNumberTwo.ToString());
 
         Debug.Log(randomNumberOne + randomSymbol[symbolIndex] + randomNumberTwo);
         Debug.Log(GetOperationsAnswersString());
     }
 
-    public string GetOperationsAnswersString()
+    public static string GetOperationsAnswersString()
     {
         if (symbolIndex == 0)
         {
@@ -57,18 +55,21 @@ public class MathProblemGenerator : MonoBehaviour
         return "";
     }
 
-    public string MixedNumberFraction()
+    public static string MixedNumberFraction()
     {
+        string mixedNum;
         int wholeNumber = randomNumberOne / randomNumberTwo;
         int remainder = randomNumberOne % randomNumberTwo;
-        string mixedNum = wholeNumber.ToString() + " " + remainder.ToString() + "/" + randomNumberTwo.ToString();
+
+        if (wholeNumber == 0)
+        {
+            mixedNum = remainder.ToString() + "/" + randomNumberTwo.ToString();
+            return mixedNum;
+        }
+
+        mixedNum = wholeNumber.ToString() + " " + remainder.ToString() + "/" + randomNumberTwo.ToString();
 
         return mixedNum;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
