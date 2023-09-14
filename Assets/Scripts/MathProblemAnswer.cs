@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class MathProblemAnswer : MonoBehaviour
 {
+    public MathProblemUI UI;
+
     public TMP_InputField input;
 
     // Update is called once per frame
@@ -14,7 +16,6 @@ public class MathProblemAnswer : MonoBehaviour
         {
             CompareInput();
         }
-        
     }
 
     public void CompareInput()
@@ -24,12 +25,14 @@ public class MathProblemAnswer : MonoBehaviour
         if (playerInput.Equals(MathProblemGenerator.GetOperationsAnswersString()))
         {
             Debug.Log("yippe");
+            TroopManager.TroopAdder();
+            MathProblemGenerator.GenerateMathProblem();
+            
         }
         else
         {
             Debug.Log("notyippe");
         }
-
     }
 
 }

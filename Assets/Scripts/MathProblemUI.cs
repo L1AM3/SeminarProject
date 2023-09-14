@@ -7,7 +7,7 @@ public class MathProblemUI : MonoBehaviour
 {
     public TMP_Text MathProblem;
 
-    private void Start()
+    private void UpdateUI()
     {
        MathProblem.text = MathProblemGenerator.MathProblem;
     }

@@ -15,8 +15,6 @@ public static class MathProblemGenerator
 
     public static string MathProblem;
 
-    // Start is called before the first frame update
-
     public static void GenerateMathProblem()
     {
         randomNumberOne = UnityEngine.Random.Range(0, 30);
