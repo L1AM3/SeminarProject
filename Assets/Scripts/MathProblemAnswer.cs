@@ -21,17 +21,16 @@ public class MathProblemAnswer : MonoBehaviour
     public void CompareInput()
     {
         string playerInput = input.text;
-        Debug.Log("test");
+
         if (playerInput.Equals(MathProblemGenerator.GetOperationsAnswersString()))
         {
-            Debug.Log("yippe");
             TroopManager.TroopAdder();
             MathProblemGenerator.GenerateMathProblem();
             
         }
         else
         {
-            Debug.Log("notyippe");
+            //Debug.Log("notyippe");
         }
     }
 
