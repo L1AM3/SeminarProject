@@ -26,11 +26,12 @@ public class MathProblemAnswer : MonoBehaviour
         {
             TroopManager.TroopAdder();
             MathProblemGenerator.GenerateMathProblem();
+            UI.ClearInput();
             
         }
         else
         {
-            //Debug.Log("notyippe");
+            UI.ClearInput();
         }
     }
 
