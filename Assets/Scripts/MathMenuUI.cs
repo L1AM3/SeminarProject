@@ -6,7 +6,6 @@ using TMPro;
 public class MathMenuUI : MonoBehaviour
 {
     public Timer timer;
-    private float TimeToDisplay;
 
     public TMP_Text AdditionArcherCount;
     public TMP_Text SubtractionSwordsmanCount;
@@ -17,7 +16,6 @@ public class MathMenuUI : MonoBehaviour
     void Update()
     {
         UpdateUI();
-        timer.DisplayTime(TimeToDisplay);
     }
 
     private void UpdateUI()

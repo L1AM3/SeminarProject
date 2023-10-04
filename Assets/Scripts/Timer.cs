@@ -24,6 +24,7 @@ public class Timer : MonoBehaviour
         {
             if (TimeRemaining > 0)
             {
+                DisplayTime(TimeRemaining);
                 TimeRemaining -= Time.deltaTime;
             }
             else
