@@ -5,9 +5,9 @@ using TMPro;
 
 public class Timer : MonoBehaviour
 {
-    public float TimeRemaining = 2;
+    public float TimeRemaining = 120;
 
-    public TMP_Text Time; 
+    public TMP_Text TimerText; 
 
     public bool IsRunning = false;
 
@@ -24,7 +24,7 @@ public class Timer : MonoBehaviour
         {
             if (TimeRemaining > 0)
             {
-                TimeRemaining -= TimeRemaining;
+                TimeRemaining -= Time.deltaTime;
             }
             else
             {
@@ -39,6 +39,6 @@ public class Timer : MonoBehaviour
     {
         float minutes = Mathf.FloorToInt(timeToDisplay / 60);
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);
-        Time.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        TimerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 }
