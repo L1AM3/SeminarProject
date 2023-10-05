@@ -5,8 +5,6 @@ using TMPro;
 
 public class MathMenuUI : MonoBehaviour
 {
-    public Timer timer;
-
     public TMP_Text AdditionArcherCount;
     public TMP_Text SubtractionSwordsmanCount;
     public TMP_Text MultiplicationMarineCount;

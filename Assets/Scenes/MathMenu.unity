@@ -1485,7 +1485,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76f4c84f11eec9b4d91b99ea7678a2ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: {fileID: 977317623}
   AdditionArcherCount: {fileID: 384926493}
   SubtractionSwordsmanCount: {fileID: 1313793565}
   MultiplicationMarineCount: {fileID: 1250745111}
@@ -1499,12 +1498,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 977317617}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70a24e661ac0d8043b2a6d315589d4ab, type: 3}
+  m_Script: {fileID: 11500000, guid: da513fac165e608499d63de7b77fe92f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TimeRemaining: 120
   TimerText: {fileID: 431630888}
-  IsRunning: 0
 --- !u!1 &988174333
 GameObject:
   m_ObjectHideFlags: 0
@@ -2641,6 +2638,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1979480106}
   m_CullTransparentMesh: 1
+--- !u!1 &2031556072
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2031556074}
+  - component: {fileID: 2031556073}
+  m_Layer: 0
+  m_Name: TimerManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2031556073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2031556072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c79d24473713cb4ba084f09afe035eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &2031556074
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2031556072}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 563.94214, y: 189.02203, z: -7.6809387}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2081629925
 GameObject:
   m_ObjectHideFlags: 0
@@ -2873,3 +2914,4 @@ SceneRoots:
   - {fileID: 2117336969}
   - {fileID: 977317621}
   - {fileID: 1429548358}
+  - {fileID: 2031556074}

@@ -2,30 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Events;
+using System;
 
-public class Timer : MonoBehaviour
+public static class Timer
 {
-    public float TimeRemaining = 120;
+    public static float TimeRemaining = 120;
+    public static event Action UpdatedTime;
+    public static bool IsRunning = true;
 
-    public TMP_Text TimerText; 
-
-    public bool IsRunning = false;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        IsRunning = true;
-    }
-
-    // Update is called once per frame
-    void Update()
+    public static void Timing(float dt)
     {
         if (IsRunning)
         {
             if (TimeRemaining > 0)
             {
-                DisplayTime(TimeRemaining);
-                TimeRemaining -= Time.deltaTime;
+                UpdatedTime?.Invoke();
+                TimeRemaining -= dt;
             }
             else
             {
@@ -36,10 +29,5 @@ public class Timer : MonoBehaviour
         }
     }
 
-    public void DisplayTime(float timeToDisplay)
-    {
-        float minutes = Mathf.FloorToInt(timeToDisplay / 60);
-        float seconds = Mathf.FloorToInt(timeToDisplay % 60);
-        TimerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
-    }
+
 }
