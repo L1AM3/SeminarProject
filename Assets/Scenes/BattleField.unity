@@ -154,7 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 16
   height: 9
-  tilePrefab: {fileID: 2656761195214682974, guid: 996996298e5517141ba3769b31371b03, type: 3}
+  tilePrefab: {fileID: 7689934448574704104, guid: 996996298e5517141ba3769b31371b03, type: 3}
   cam: {fileID: 1960989762}
 --- !u!4 &1286959261
 Transform:
@@ -228,7 +228,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: -1000
   far clip plane: 1000
   field of view: 60
   orthographic: 1

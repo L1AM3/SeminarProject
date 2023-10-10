@@ -7,7 +7,7 @@ public class MathProblemAnswer : MonoBehaviour
 {
     public MathProblemUI UI;
 
-    public TMP_InputField input;
+    public TMP_Text input;
 
     // Update is called once per frame
     void Update()
@@ -21,8 +21,12 @@ public class MathProblemAnswer : MonoBehaviour
     public void CompareInput()
     {
         string playerInput = input.text;
+        Debug.Log(playerInput);
+        Debug.Log(input.text);
 
-        if (playerInput.Equals(MathProblemGenerator.GetOperationsAnswersString()))
+        string answer = MathProblemGenerator.GetOperationsAnswersString();
+
+        if (playerInput.Contains(answer))
         {
             TroopManager.TroopAdder();
             MathProblemGenerator.GenerateMathProblem();

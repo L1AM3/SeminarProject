@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.Events;
 using System;
+using UnityEngine.SceneManagement;
 
 public static class Timer
 {
@@ -25,6 +26,7 @@ public static class Timer
                 Debug.Log("Time has run out!");
                 TimeRemaining = 0;
                 IsRunning = false;
+                SceneManager.LoadScene("BattleField");
             }
         }
     }
