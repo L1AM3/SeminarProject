@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GridManager : MonoBehaviour
 {
+    public event Action<Tile> TileSelected;
+
     [SerializeField] private int width, height;
 
     [SerializeField] private Tile tilePrefab;
@@ -38,5 +41,9 @@ public class GridManager : MonoBehaviour
 
         cam.transform.position = new Vector3((float)width / 2 - 0.5f, (float)height / 2 - 0.5f, 10);
     }
-            
+      
+    public void OnTileSelected(Tile tile)
+    {
+        TileSelected?.Invoke(tile);
+    }
 }

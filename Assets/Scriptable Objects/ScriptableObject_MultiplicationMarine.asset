@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b4dbaa95d15142440ab5f34e36f5895f, type: 3}
-  m_Name: ScriptableObject_TroopType 1
+  m_Name: ScriptableObject_MultiplicationMarine
   m_EditorClassIdentifier: 
-  health: 212
+  health: 0

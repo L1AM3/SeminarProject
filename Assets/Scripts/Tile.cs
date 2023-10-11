@@ -8,6 +8,7 @@ public class Tile : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private GameObject highlight;
 
+    private bool hasTroop = false; 
     private Vector2 tilePos;
     private GridManager _gridManager;
     public Vector2 gridCoords;
@@ -16,6 +17,8 @@ public class Tile : MonoBehaviour
     public GridManager GetGridManager() => _gridManager;
     public void SetGridCords(Vector2 gridCoordinates) => gridCoords = gridCoordinates;
     public Vector2 GetGridCords() => gridCoords;
+    public void InverthasTroop() => hasTroop = !hasTroop;
+    public bool HasTroop() => hasTroop;
 
     public void Init(bool isOffset)
     {
@@ -31,5 +34,10 @@ public class Tile : MonoBehaviour
     private void OnMouseExit()
     {
         highlight.SetActive(false);
+    }
+
+    private void OnMouseDown()
+    {
+        _gridManager.OnTileSelected(this);
     }
 }
