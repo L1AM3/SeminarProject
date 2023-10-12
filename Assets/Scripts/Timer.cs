@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 
 public static class Timer
 {
-    public static float TimeRemaining = 120;
+    public static float TimeRemaining = 60;
     public static event Action UpdatedTime;
     public static bool IsRunning = true;
 

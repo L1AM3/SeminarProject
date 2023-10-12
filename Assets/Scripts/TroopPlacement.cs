@@ -28,7 +28,7 @@ public class TroopPlacement : MonoBehaviour
         if (!tile.HasTroop())
         {
             tile.InverthasTroop();
-            Instantiate(troopPrefabs[troopType], tile.transform.position, Quaternion.identity, tile.transform);
+            //Instantiate(troopPrefabs[troopType], tile.transform.position, Quaternion.identity, tile.transform);
         }
 
         switch (troopType)
@@ -36,7 +36,7 @@ public class TroopPlacement : MonoBehaviour
             case 3:
                 if (TroopManager.DivisionDogFighter >= 1)
                 {
-                    Instantiate(troopPrefabs[troopType], tile.transform);
+                    Instantiate(troopPrefabs[troopType], tile.transform.position, Quaternion.identity, tile.transform);
                     TroopManager.DivisionDogFighter -= 1;
                 }
                 break;
@@ -44,7 +44,7 @@ public class TroopPlacement : MonoBehaviour
             case 2:
                 if (TroopManager.MultiplicationMarine >= 1)
                 {
-                    Instantiate(troopPrefabs[troopType], tile.transform);
+                    Instantiate(troopPrefabs[troopType], tile.transform.position, Quaternion.identity, tile.transform);
                     TroopManager.MultiplicationMarine -= 1;
                 }
                 break;
@@ -52,7 +52,7 @@ public class TroopPlacement : MonoBehaviour
             case 1:
                 if (TroopManager.SubtractionSwordsman >= 1)
                 {
-                    Instantiate(troopPrefabs[troopType], tile.transform);
+                    Instantiate(troopPrefabs[troopType], tile.transform.position, Quaternion.identity, tile.transform);
                     TroopManager.SubtractionSwordsman -= 1;
                 }
                 break;
@@ -60,7 +60,7 @@ public class TroopPlacement : MonoBehaviour
             case 0:
                 if (TroopManager.AdditionArcher >= 1)
                 {
-                    Instantiate(troopPrefabs[troopType], tile.transform);
+                    Instantiate(troopPrefabs[troopType], tile.transform.position, Quaternion.identity, tile.transform);
                     TroopManager.AdditionArcher -= 1;
                 }
                 break;
