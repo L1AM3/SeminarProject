@@ -17,8 +17,8 @@ public static class MathProblemGenerator
 
     public static void GenerateMathProblem()
     {
-        randomNumberOne = UnityEngine.Random.Range(0, 30);
-        randomNumberTwo = UnityEngine.Random.Range(0, 30);
+        randomNumberOne = UnityEngine.Random.Range(1, 30);
+        randomNumberTwo = UnityEngine.Random.Range(1, 30);
 
         MathProblem = (randomNumberOne.ToString());
         MathProblem += (randomSymbol[symbolIndex].ToString());
@@ -55,9 +55,22 @@ public static class MathProblemGenerator
 
     public static string MixedNumberFraction()
     {
+        int gcd = GetGreatestCommonDivisor(randomNumberOne, randomNumberTwo);
+
+        if (gcd != -1)
+        {
+            randomNumberOne /= gcd;
+            randomNumberTwo /= gcd;
+        }
+
         string mixedNum;
         int wholeNumber = randomNumberOne / randomNumberTwo;
         int remainder = randomNumberOne % randomNumberTwo;
+
+        if (remainder == 0)
+        {
+            return wholeNumber.ToString();
+        }
 
         if (wholeNumber == 0)
         {
@@ -70,4 +83,15 @@ public static class MathProblemGenerator
         return mixedNum;
     }
 
+    public static int GetGreatestCommonDivisor(int num, int dom)
+    {
+        for (int i = num; i >= 1; i--)
+        {
+            if (num % i == 0 && dom % i == 0)
+            {
+                return i;
+            }
+        }
+        return -1;
+    }
 }
