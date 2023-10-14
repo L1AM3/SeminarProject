@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4dbaa95d15142440ab5f34e36f5895f, type: 3}
   m_Name: ScriptableObject_SubtractionSwordsman
   m_EditorClassIdentifier: 
-  health: 212
+  HitsCanTake: 2
+  Damage: 1
+  Defense: 0
+  Movement: 4
+  Range: 1
