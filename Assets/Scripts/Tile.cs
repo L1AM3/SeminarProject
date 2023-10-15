@@ -11,14 +11,19 @@ public class Tile : MonoBehaviour
     private bool hasTroop = false; 
     private Vector2 tilePos;
     private GridManager _gridManager;
-    public Vector2 gridCoords;
+    public Vector2Int gridCoords;
 
     public void SetGridManager(GridManager gridManager) => _gridManager = gridManager;
     public GridManager GetGridManager() => _gridManager;
-    public void SetGridCords(Vector2 gridCoordinates) => gridCoords = gridCoordinates;
-    public Vector2 GetGridCords() => gridCoords;
+    public void SetGridCords(Vector2Int gridCoordinates) => gridCoords = gridCoordinates;
+    public Vector2Int GetGridCords() => gridCoords;
     public void InverthasTroop() => hasTroop = !hasTroop;
     public bool HasTroop() => hasTroop;
+
+    public void Update()
+    {
+        
+    }
 
     public void Init(bool isOffset)
     {
@@ -28,7 +33,6 @@ public class Tile : MonoBehaviour
     private void OnMouseEnter()
     {
         highlight.SetActive(true);
-        Debug.Log(GetGridCords());
     }
 
     private void OnMouseExit()

@@ -4617,6 +4617,42 @@ PrefabInstance:
       propertyPath: grid
       value: 
       objectReference: {fileID: 803084660}
+    - target: {fileID: 25587345918118996, guid: 6bb2a79c821bf734ebc1a1ba6b7be020, type: 3}
+      propertyPath: troopData.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 25587345918118996, guid: 6bb2a79c821bf734ebc1a1ba6b7be020, type: 3}
+      propertyPath: troopData.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: fcc51d8d46f19ef41b93f97e2ed2f142, type: 2}
+    - target: {fileID: 25587345918118996, guid: 6bb2a79c821bf734ebc1a1ba6b7be020, type: 3}
+      propertyPath: troopData.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: f684b9031f5bc0a48a8dfb1ece88a4dd, type: 2}
+    - target: {fileID: 25587345918118996, guid: 6bb2a79c821bf734ebc1a1ba6b7be020, type: 3}
+      propertyPath: troopData.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 2be606b1bb7711c4584d72b16cb5ede9, type: 2}
+    - target: {fileID: 25587345918118996, guid: 6bb2a79c821bf734ebc1a1ba6b7be020, type: 3}
+      propertyPath: troopData.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 4aa3b88894e9ff54ea3a05e6c0a63ada, type: 2}
+    - target: {fileID: 25587345918118996, guid: 6bb2a79c821bf734ebc1a1ba6b7be020, type: 3}
+      propertyPath: troopPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 6918163885776767327, guid: fb55b9c8fffb8034eb5b652dd456cdab, type: 3}
+    - target: {fileID: 25587345918118996, guid: 6bb2a79c821bf734ebc1a1ba6b7be020, type: 3}
+      propertyPath: troopPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 4429634582890572603, guid: 8ed4c473f9c634a4caac749b7eeab676, type: 3}
+    - target: {fileID: 25587345918118996, guid: 6bb2a79c821bf734ebc1a1ba6b7be020, type: 3}
+      propertyPath: troopPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 1586051962567014111, guid: 7734142d536286e46bce1afe61d0b18c, type: 3}
+    - target: {fileID: 25587345918118996, guid: 6bb2a79c821bf734ebc1a1ba6b7be020, type: 3}
+      propertyPath: troopPrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 7062285072508486718, guid: 8ae571c0a6509394aa221c9d753e3721, type: 3}
     - target: {fileID: 347948641232801456, guid: 6bb2a79c821bf734ebc1a1ba6b7be020, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -4693,6 +4729,14 @@ PrefabInstance:
       propertyPath: height
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 1093256697250243240, guid: ecc2a8587c6340f42acee355067821a4, type: 3}
+      propertyPath: homeTilePrefab
+      value: 
+      objectReference: {fileID: -2379818527044092129, guid: 1ac6b34ab1aeab94b9b8bc49ecc7bead, type: 3}
+    - target: {fileID: 1093256697250243240, guid: ecc2a8587c6340f42acee355067821a4, type: 3}
+      propertyPath: enemyTilePrefab
+      value: 
+      objectReference: {fileID: -3307696075632927614, guid: e9904cf02b8f978468d3d3c2fa8f020f, type: 3}
     - target: {fileID: 4144915723062862637, guid: ecc2a8587c6340f42acee355067821a4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.87002
