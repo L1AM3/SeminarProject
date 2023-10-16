@@ -1,11 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GridManager : MonoBehaviour
 {
     public event Action<Tile> TileSelected;
+    private bool enemySpawningTile;
 
     [SerializeField] private int width, height;
 
@@ -17,12 +19,15 @@ public class GridManager : MonoBehaviour
 
     private Dictionary<Vector2, Tile> tiles;
 
+    public int GetWidth() => width;
+    public int GetHeight() => height;
+
     private void Start()
     {
         GenerateGrid();
     }
 
-    void GenerateGrid()
+    public void GenerateGrid()
     {
         tiles = new Dictionary<Vector2, Tile>();
         for (int x = 0; x < width; x++)
@@ -33,12 +38,13 @@ public class GridManager : MonoBehaviour
                 {
 
                     tiles[new Vector2(x, y)] = CreateTile(homeTilePrefab, new Vector2Int(x, y));
-                    continue;
+  
                 }
                 else if (x == width - 1) 
                 {
                     tiles[new Vector2(x, y)] = CreateTile(enemyTilePrefab, new Vector2Int(x, y));
-                    continue;
+    
+
                 }
 
                 tiles[new Vector2(x, y)] = CreateTile(tilePrefab, new Vector2Int( x, y));

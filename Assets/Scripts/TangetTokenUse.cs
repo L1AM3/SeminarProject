@@ -7,7 +7,7 @@ public class TangetTokenUse : MonoBehaviour
 {
     [SerializeField] private TMP_Text tangenttokentext;
     [SerializeField] private GameObject mathMenuObj;
-    private int tangetTokenCount = 1;
+    public int tangetTokenCount = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +28,11 @@ public class TangetTokenUse : MonoBehaviour
     public void TangetButton()
     {
         mathMenuObj.SetActive(false);
+    }
+
+    public void TangentTokenAdd()
+    {
+        tangetTokenCount++;
     }
 
     // Update is called once per frame

@@ -42,7 +42,6 @@ public class TroopBehavior : MonoBehaviour
             transform.position = theFuckingTile.transform.position;
             GetComponent<Collider2D>().enabled = false;
             GetComponent<Collider2D>().enabled = true;
-
         }
     }
 }
