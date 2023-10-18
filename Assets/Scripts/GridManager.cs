@@ -9,9 +9,21 @@ public class GridManager : MonoBehaviour
     public event Action<Tile> TileSelected;
     private bool enemySpawningTile;
 
+    private int[] gridLayout =
+    {
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    };
+
+    [SerializeField] private List<Tile> TileTypes;
+
     [SerializeField] private int width, height;
 
-    [SerializeField] private Tile tilePrefab;
+    [SerializeField] private Tile DefaultTile;
     [SerializeField] private Tile homeTilePrefab;
     [SerializeField] private Tile enemyTilePrefab;
 
@@ -34,20 +46,15 @@ public class GridManager : MonoBehaviour
         {
             for (int y = 0; y < height; y++)
             {
-                if (x == 0)
+                int index = x * height + y;
+                if (index < gridLayout.Length)
                 {
-
-                    tiles[new Vector2(x, y)] = CreateTile(homeTilePrefab, new Vector2Int(x, y));
-  
+                    CreateTile(TileTypes[gridLayout[index]], new Vector2Int(x, y));
                 }
-                else if (x == width - 1) 
+                else
                 {
-                    tiles[new Vector2(x, y)] = CreateTile(enemyTilePrefab, new Vector2Int(x, y));
-    
-
+                    CreateTile(DefaultTile, new Vector2Int(x, y));
                 }
-
-                tiles[new Vector2(x, y)] = CreateTile(tilePrefab, new Vector2Int( x, y));
             }
         }
 
