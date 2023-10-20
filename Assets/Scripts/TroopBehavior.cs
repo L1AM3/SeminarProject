@@ -18,11 +18,11 @@ public class TroopBehavior : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.UpArrow) && IsTroopSelected)
         {
-            TroopMovement(new Vector2Int(0, 1));
+            TroopMovement(new Vector2Int(0, -1));
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow) && IsTroopSelected)
         {
-            TroopMovement(new Vector2Int(0, -1));
+            TroopMovement(new Vector2Int(0, 1));
         }
     }
 
@@ -42,6 +42,10 @@ public class TroopBehavior : MonoBehaviour
             transform.position = theFuckingTile.transform.position;
             GetComponent<Collider2D>().enabled = false;
             GetComponent<Collider2D>().enabled = true;
+
+            GetComponent<BreadthFirstSearch>().BFS(TroopGridsCoord, Grid);
         }
+
+        TroopManager.Invoke();
     }
 }

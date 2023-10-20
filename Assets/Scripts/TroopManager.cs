@@ -1,36 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Globalization;
 using UnityEngine;
 
 public static class TroopManager
 {
-    public static int AdditionArcher;
-    public static int SubtractionSwordsman;
-    public static int MultiplicationMarine;
-    public static int DivisionDogFighter;
+    public static event Action TroopMoved;
+    //private List<TroopBehavior> _behaviors;
 
-    public static void TroopAdder()
+    public static void Invoke()
     {
-        if (MathProblemGenerator.symbolIndex == 0)
-        {
-            AdditionArcher++;
-            Debug.Log("Archer: " +  AdditionArcher);
-        }
-        else if (MathProblemGenerator.symbolIndex == 1)
-        {
-            SubtractionSwordsman++;
-            Debug.Log("Sword: " + SubtractionSwordsman);
-        }
-        else if (MathProblemGenerator.symbolIndex == 2)
-        {
-            MultiplicationMarine++;
-            Debug.Log("Marine: " + MultiplicationMarine);
-        }
-        else if (MathProblemGenerator.symbolIndex == 3)
-        {
-            DivisionDogFighter++;
-            Debug.Log("DogFighter: " + DivisionDogFighter);
-        }
+        TroopMoved?.Invoke();
     }
+
 }

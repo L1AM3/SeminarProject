@@ -39,34 +39,34 @@ public class TroopPlacement : MonoBehaviour
         switch (troopType)
         {
             case 3:
-                if (TroopManager.DivisionDogFighter >= 1)
+                if (TroopCounter.DivisionDogFighter >= 1)
                 {
                     SpawnTroop(3, tile);
-                    TroopManager.DivisionDogFighter -= 1;
+                    TroopCounter.DivisionDogFighter -= 1;
                 }
                 break;
 
             case 2:
-                if (TroopManager.MultiplicationMarine >= 1)
+                if (TroopCounter.MultiplicationMarine >= 1)
                 {
                     SpawnTroop(2, tile);
-                    TroopManager.MultiplicationMarine -= 1;
+                    TroopCounter.MultiplicationMarine -= 1;
                 }
                 break;
 
             case 1:
-                if (TroopManager.SubtractionSwordsman >= 1)
+                if (TroopCounter.SubtractionSwordsman >= 1)
                 {
                     SpawnTroop(1, tile);
-                    TroopManager.SubtractionSwordsman -= 1;
+                    TroopCounter.SubtractionSwordsman -= 1;
                 }
                 break;
 
             case 0:
-                if (TroopManager.AdditionArcher >= 1)
+                if (TroopCounter.AdditionArcher >= 1)
                 {
                     SpawnTroop(0, tile);
-                    TroopManager.AdditionArcher -= 1;
+                    TroopCounter.AdditionArcher -= 1;
                 }
                 break;
 

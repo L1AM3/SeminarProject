@@ -18,9 +18,9 @@ public class MathMenuUI : MonoBehaviour
 
     private void UpdateUI()
     {
-        AdditionArcherCount.text = TroopManager.AdditionArcher.ToString();
-        SubtractionSwordsmanCount.text = TroopManager.SubtractionSwordsman.ToString();
-        MultiplicationMarineCount.text = TroopManager.MultiplicationMarine.ToString();
-        DivisionDogFighterCount.text = TroopManager.DivisionDogFighter.ToString();
+        AdditionArcherCount.text = TroopCounter.AdditionArcher.ToString();
+        SubtractionSwordsmanCount.text = TroopCounter.SubtractionSwordsman.ToString();
+        MultiplicationMarineCount.text = TroopCounter.MultiplicationMarine.ToString();
+        DivisionDogFighterCount.text = TroopCounter.DivisionDogFighter.ToString();
     }
 }

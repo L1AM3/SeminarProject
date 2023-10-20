@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1096097054546671681}
   - component: {fileID: 25587345918118996}
+  - component: {fileID: 3791185189237740903}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -45,12 +46,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   troopPrefabs:
-  - {fileID: 2585800145787811461, guid: fb55b9c8fffb8034eb5b652dd456cdab, type: 3}
-  - {fileID: 6984985757235128634, guid: 8ed4c473f9c634a4caac749b7eeab676, type: 3}
-  - {fileID: 2958647386893336502, guid: 7734142d536286e46bce1afe61d0b18c, type: 3}
-  - {fileID: 2798963127463348457, guid: 8ae571c0a6509394aa221c9d753e3721, type: 3}
-  troops:
-  - {fileID: 11400000, guid: fcc51d8d46f19ef41b93f97e2ed2f142, type: 2}
-  - {fileID: 11400000, guid: f684b9031f5bc0a48a8dfb1ece88a4dd, type: 2}
-  - {fileID: 11400000, guid: 2be606b1bb7711c4584d72b16cb5ede9, type: 2}
-  - {fileID: 11400000, guid: 4aa3b88894e9ff54ea3a05e6c0a63ada, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  troopData: []
+  grid: {fileID: 0}
+--- !u!114 &3791185189237740903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 347948641232801456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43b4c52d6aca79241ba6615dbe2ab72f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Enemy: {fileID: 5113873710783399125, guid: 08f8ed030c9f2874bb37e4a9ebea41f0, type: 3}
+  SpawnDelay: 5
+  grid: {fileID: 0}

@@ -47,23 +47,24 @@ public class GridManager : MonoBehaviour
             for (int y = 0; y < height; y++)
             {
                 int index = x * height + y;
+                var gridCoord = new Vector2Int(x, y);
                 if (index < gridLayout.Length)
                 {
-                    CreateTile(TileTypes[gridLayout[y,x]], new Vector2Int(x, y));
+                    tiles[gridCoord] = CreateTile(TileTypes[gridLayout[y, x]], gridCoord);
                 }
                 else
                 {
-                    CreateTile(DefaultTile, new Vector2Int(x, y));
+                    tiles[gridCoord] = CreateTile(DefaultTile, gridCoord);
                 }
             }
         }
 
-        cam.transform.position = new Vector3((float)width / 2 - 0.5f, (float)height / 2 - 0.5f, 10);
+        cam.transform.position = new Vector3((float)width / 2 - 0.5f, (float)-height / 2 + 0.5f, 10);
     }
 
     public Tile CreateTile(Tile prefabtile, Vector2Int tilepos)
     {
-        var spawnedTile = Instantiate(prefabtile, new Vector2(tilepos.x, tilepos.y), Quaternion.identity, transform);
+        var spawnedTile = Instantiate(prefabtile, new Vector2(tilepos.x, -tilepos.y), Quaternion.identity, transform);
         spawnedTile.SetGridManager(this);
         spawnedTile.SetGridCords(new Vector2Int(tilepos.x, tilepos.y));
         spawnedTile.name = $"Tile {tilepos.x} {tilepos.y}";

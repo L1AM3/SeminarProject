@@ -3949,11 +3949,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!1 &1781172925 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 347948641232801456, guid: 6bb2a79c821bf734ebc1a1ba6b7be020, type: 3}
-  m_PrefabInstance: {fileID: 1252212275243530867}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1803107800
 GameObject:
   m_ObjectHideFlags: 0
@@ -4837,40 +4832,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3791185189237740903, guid: 6bb2a79c821bf734ebc1a1ba6b7be020, type: 3}
+      propertyPath: grid
+      value: 
+      objectReference: {fileID: 803084660}
+    - target: {fileID: 3791185189237740903, guid: 6bb2a79c821bf734ebc1a1ba6b7be020, type: 3}
+      propertyPath: Enemy
+      value: 
+      objectReference: {fileID: 5580262782699340446, guid: 08f8ed030c9f2874bb37e4a9ebea41f0, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 347948641232801456, guid: 6bb2a79c821bf734ebc1a1ba6b7be020, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1252212275243530870}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bb2a79c821bf734ebc1a1ba6b7be020, type: 3}
 --- !u!114 &1252212275243530869 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 25587345918118996, guid: 6bb2a79c821bf734ebc1a1ba6b7be020, type: 3}
   m_PrefabInstance: {fileID: 1252212275243530867}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1781172925}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b2a31baaec36e80439d314e282bb4366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1252212275243530870
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1781172925}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43b4c52d6aca79241ba6615dbe2ab72f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Enemy: {fileID: 5113873710783399125, guid: 08f8ed030c9f2874bb37e4a9ebea41f0, type: 3}
-  SpawnDelay: 5
-  grid: {fileID: 803084660}
 --- !u!1001 &7111928081517628450
 PrefabInstance:
   m_ObjectHideFlags: 0

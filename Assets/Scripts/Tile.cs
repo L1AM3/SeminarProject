@@ -7,6 +7,7 @@ public class Tile : MonoBehaviour
     [SerializeField] private Color baseColor, offsetColor;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private GameObject highlight;
+    [SerializeField] private bool isWalkable = true;
 
     private bool hasTroop = false; 
     private Vector2 tilePos;
@@ -17,6 +18,7 @@ public class Tile : MonoBehaviour
     public GridManager GetGridManager() => _gridManager;
     public void SetGridCords(Vector2Int gridCoordinates) => gridCoords = gridCoordinates;
     public Vector2Int GetGridCords() => gridCoords;
+    public bool IsWalkable() => isWalkable;
     public void InverthasTroop() => hasTroop = !hasTroop;
     public bool HasTroop() => hasTroop;
 

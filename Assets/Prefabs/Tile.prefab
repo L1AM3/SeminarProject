@@ -103,6 +103,7 @@ MonoBehaviour:
   offsetColor: {r: 0.5568628, g: 0.3829083, b: 0, a: 1}
   spriteRenderer: {fileID: 5847083018290227936}
   highlight: {fileID: 3840123921575693932}
+  isWalkable: 1
   gridCoords: {x: 0, y: 0}
 --- !u!61 &-7690823285496953065
 BoxCollider2D:

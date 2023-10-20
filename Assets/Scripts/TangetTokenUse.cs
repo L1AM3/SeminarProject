@@ -28,6 +28,7 @@ public class TangetTokenUse : MonoBehaviour
     public void TangetButton()
     {
         mathMenuObj.SetActive(false);
+        Time.timeScale = 1;
     }
 
     public void TangentTokenAdd()

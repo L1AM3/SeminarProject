@@ -73,8 +73,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -803042683
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.36794567, g: 0, b: 1, a: 1}
@@ -148,6 +148,7 @@ MonoBehaviour:
   offsetColor: {r: 0.472787, g: 0.07075471, b: 1, a: 1}
   spriteRenderer: {fileID: 7018629201081946621}
   highlight: {fileID: 8287176155997857335}
+  isWalkable: 1
   gridCoords: {x: 0, y: 0}
 --- !u!1001 &3138847784788293241
 PrefabInstance:

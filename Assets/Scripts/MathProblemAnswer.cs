@@ -28,7 +28,7 @@ public class MathProblemAnswer : MonoBehaviour
 
         if (playerInput.Contains(answer))
         {
-            TroopManager.TroopAdder();
+            TroopCounter.TroopAdder();
             MathProblemGenerator.GenerateMathProblem();
             UI.ClearInput();
             
