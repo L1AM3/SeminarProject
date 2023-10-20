@@ -4901,10 +4901,18 @@ PrefabInstance:
       objectReference: {fileID: -3307696075632927614, guid: e9904cf02b8f978468d3d3c2fa8f020f, type: 3}
     - target: {fileID: 1093256697250243240, guid: ecc2a8587c6340f42acee355067821a4, type: 3}
       propertyPath: TileTypes.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1093256697250243240, guid: ecc2a8587c6340f42acee355067821a4, type: 3}
       propertyPath: TileTypes.Array.data[0]
+      value: 
+      objectReference: {fileID: -2379818527044092129, guid: 1ac6b34ab1aeab94b9b8bc49ecc7bead, type: 3}
+    - target: {fileID: 1093256697250243240, guid: ecc2a8587c6340f42acee355067821a4, type: 3}
+      propertyPath: TileTypes.Array.data[1]
+      value: 
+      objectReference: {fileID: 2278856930989816318, guid: c65d2634674f57648b5317c5e6d769ff, type: 3}
+    - target: {fileID: 1093256697250243240, guid: ecc2a8587c6340f42acee355067821a4, type: 3}
+      propertyPath: TileTypes.Array.data[2]
       value: 
       objectReference: {fileID: -3307696075632927614, guid: e9904cf02b8f978468d3d3c2fa8f020f, type: 3}
     - target: {fileID: 4144915723062862637, guid: ecc2a8587c6340f42acee355067821a4, type: 3}

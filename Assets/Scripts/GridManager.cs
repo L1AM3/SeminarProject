@@ -9,14 +9,14 @@ public class GridManager : MonoBehaviour
     public event Action<Tile> TileSelected;
     private bool enemySpawningTile;
 
-    private int[] gridLayout =
+    private int[,] gridLayout =
     {
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        { 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, },
+        { 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, },
+        { 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, },
+        { 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, },
+        { 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, },
+        { 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, }
     };
 
     [SerializeField] private List<Tile> TileTypes;
@@ -24,8 +24,8 @@ public class GridManager : MonoBehaviour
     [SerializeField] private int width, height;
 
     [SerializeField] private Tile DefaultTile;
-    [SerializeField] private Tile homeTilePrefab;
-    [SerializeField] private Tile enemyTilePrefab;
+    //[SerializeField] private Tile homeTilePrefab;
+    //[SerializeField] private Tile enemyTilePrefab;
 
     [SerializeField] private Transform cam;
 
@@ -49,7 +49,7 @@ public class GridManager : MonoBehaviour
                 int index = x * height + y;
                 if (index < gridLayout.Length)
                 {
-                    CreateTile(TileTypes[gridLayout[index]], new Vector2Int(x, y));
+                    CreateTile(TileTypes[gridLayout[y,x]], new Vector2Int(x, y));
                 }
                 else
                 {
