@@ -9,6 +9,7 @@ public class Tile : MonoBehaviour
     [SerializeField] private GameObject highlight;
     [SerializeField] private bool isWalkable = true;
 
+    private TroopBehavior troop;
     private bool hasTroop = false; 
     private Vector2 tilePos;
     private GridManager _gridManager;
@@ -19,8 +20,15 @@ public class Tile : MonoBehaviour
     public void SetGridCords(Vector2Int gridCoordinates) => gridCoords = gridCoordinates;
     public Vector2Int GetGridCords() => gridCoords;
     public bool IsWalkable() => isWalkable;
-    public void InverthasTroop() => hasTroop = !hasTroop;
     public bool HasTroop() => hasTroop;
+    public TroopBehavior GetTroopType() => troop;
+
+    public void SetTroop(TroopBehavior troop)
+    {
+        this.troop = troop;
+
+        hasTroop = troop != null;
+    }
 
     public void Update()
     {

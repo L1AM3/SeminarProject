@@ -2,14 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum TroopType
+{
+    None = -1,
+    AdditionArcher,
+    SubtractionSwordsman,
+    MultiplicationMarine,
+    DivisionDogFighter,
+}
 
 public class TroopPlacement : MonoBehaviour
 {
     [SerializeField] private TroopBehavior[] troopPrefabs;
     [SerializeField] private TroopScriptableObject[] troopData;
-    private int troopType = -1;
     [SerializeField] private GridManager grid;
     private List<TroopBehavior> troops = new List<TroopBehavior>();
+    private TroopType troopType = TroopType.None;
 
     private void OnEnable()
     {
@@ -27,45 +35,48 @@ public class TroopPlacement : MonoBehaviour
             return;
 
         Debug.Log("im in");
-        if (troopType == -1)
+        if (troopType == TroopType.None)
             return;
 
-        if (!tile.HasTroop())
+        if (tile.HasTroop() && tile.GetTroopType().GetTroopType() == troopType)
         {
-            tile.InverthasTroop();
-            //Instantiate(troopPrefabs[troopType], tile.transform.position, Quaternion.identity, tile.transform);
+            tile.GetTroopType().TroopStacking();
+            DecreaseTroopCount(troopType);
+            return;
         }
 
-        switch (troopType)
+        SpawnTroop((int)troopType, tile);
+        DecreaseTroopCount(troopType);
+    }
+
+    public void DecreaseTroopCount(TroopType type)
+    {
+        switch (type)
         {
-            case 3:
+            case TroopType.DivisionDogFighter:
                 if (TroopCounter.DivisionDogFighter >= 1)
                 {
-                    SpawnTroop(3, tile);
                     TroopCounter.DivisionDogFighter -= 1;
                 }
                 break;
 
-            case 2:
+            case TroopType.MultiplicationMarine:
                 if (TroopCounter.MultiplicationMarine >= 1)
                 {
-                    SpawnTroop(2, tile);
                     TroopCounter.MultiplicationMarine -= 1;
                 }
                 break;
 
-            case 1:
+            case TroopType.SubtractionSwordsman:
                 if (TroopCounter.SubtractionSwordsman >= 1)
                 {
-                    SpawnTroop(1, tile);
                     TroopCounter.SubtractionSwordsman -= 1;
                 }
                 break;
 
-            case 0:
+            case TroopType.AdditionArcher:
                 if (TroopCounter.AdditionArcher >= 1)
                 {
-                    SpawnTroop(0, tile);
                     TroopCounter.AdditionArcher -= 1;
                 }
                 break;
@@ -83,8 +94,11 @@ public class TroopPlacement : MonoBehaviour
         troopBehave.Grid = grid;
         troopBehave.TroopInfo = troopData[prefabIndex];
         troopBehave.Placement = this;
+        troopBehave.SetType((TroopType) prefabIndex);
 
         troops.Add(troopBehave);
+
+        tile.SetTroop(troopBehave);
     }
 
     public void SelectTroop(TroopBehavior troop)
@@ -97,7 +111,7 @@ public class TroopPlacement : MonoBehaviour
         troop.IsTroopSelected = true;
     }
 
-    public void SetType(int type)
+    public void SetType(TroopType type)
     {
         troopType = type;
     }

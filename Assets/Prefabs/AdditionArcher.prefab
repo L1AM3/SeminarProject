@@ -104,6 +104,7 @@ MonoBehaviour:
   TroopInfo: {fileID: 11400000, guid: fcc51d8d46f19ef41b93f97e2ed2f142, type: 2}
   TroopGridsCoord: {x: 0, y: 0}
   IsTroopSelected: 0
+  troopStackCounter: 0
 --- !u!58 &-8820002442976531567
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -151,4 +152,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4a41dc38f32dcf4c90d1c64694684e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridManager: {fileID: 0}

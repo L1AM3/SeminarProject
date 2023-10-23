@@ -5,7 +5,7 @@ using UnityEngine;
 public class TroopUI : MonoBehaviour
 {
     [SerializeField] TroopPlacement placement;
-    [SerializeField] int TroopType;
+    [SerializeField] TroopType TroopType;
 
     public void SetPlacementType()
     {

@@ -13,9 +13,13 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
-        SpawnTimer = SpawnDelay;
+        TroopManager.TroopMoved += SpawnEnemyNoTile;
     }
 
+    public void SpawnEnemyNoTile()
+    {
+        SpawnEnemy(grid.GetTileFromDictionary(new Vector2Int(grid.GetWidth() - 1, Random.Range(0, grid.GetHeight()))));
+    }
     // Start is called before the first frame update
     void SpawnEnemy(Tile tile)
     {
@@ -25,17 +29,5 @@ public class EnemySpawner : MonoBehaviour
 
         EnemyBehavior localEnemy = Instantiate(Enemy, tile.transform.position, Quaternion.identity, transform);
         localEnemy.SetTarget(interestingTings[Random.Range(0, interestingTings.Count)]);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        SpawnTimer -= Time.deltaTime;
-
-        if (SpawnTimer < 0)
-        {
-            SpawnEnemy(grid.GetTileFromDictionary(new Vector2Int(grid.GetWidth() - 1, Random.Range(0, grid.GetHeight()))));
-            SpawnTimer = SpawnDelay;
-        }
     }
 }

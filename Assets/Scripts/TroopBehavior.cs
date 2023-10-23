@@ -9,6 +9,8 @@ public class TroopBehavior : MonoBehaviour
     [HideInInspector] public TroopScriptableObject TroopInfo;
     [HideInInspector] public Vector2Int TroopGridsCoord;
     [HideInInspector] public bool IsTroopSelected = false;
+    [SerializeField] private int troopStackCounter;
+    private TroopType troopType = TroopType.None;
 
     private void Update()
     {
@@ -38,6 +40,8 @@ public class TroopBehavior : MonoBehaviour
 
         if (theFuckingTile != null)
         {
+            Grid.GetTileFromDictionary(TroopGridsCoord).SetTroop(null);
+
             TroopGridsCoord += dir;
             transform.position = theFuckingTile.transform.position;
             GetComponent<Collider2D>().enabled = false;
@@ -48,4 +52,13 @@ public class TroopBehavior : MonoBehaviour
 
         TroopManager.Invoke();
     }
+
+    public void TroopStacking()
+    {
+        troopStackCounter++;
+        Debug.Log(troopStackCounter.ToString());
+    }
+
+    public TroopType GetTroopType() => troopType;
+    public void SetType(TroopType type) => troopType = type;
 }
