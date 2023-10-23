@@ -40,16 +40,21 @@ public class TroopPlacement : MonoBehaviour
 
         if (tile.HasTroop() && tile.GetTroopType().GetTroopType() == troopType)
         {
-            tile.GetTroopType().TroopStacking();
-            DecreaseTroopCount(troopType);
+            if (DecreaseTroopCount(troopType))
+            {
+                tile.GetTroopType().TroopStacking();
+            }
+
             return;
         }
 
-        SpawnTroop((int)troopType, tile);
-        DecreaseTroopCount(troopType);
+        if (DecreaseTroopCount(troopType))
+        {
+            SpawnTroop((int)troopType, tile);
+        }
     }
 
-    public void DecreaseTroopCount(TroopType type)
+    public bool DecreaseTroopCount(TroopType type)
     {
         switch (type)
         {
@@ -57,6 +62,7 @@ public class TroopPlacement : MonoBehaviour
                 if (TroopCounter.DivisionDogFighter >= 1)
                 {
                     TroopCounter.DivisionDogFighter -= 1;
+                    return true;
                 }
                 break;
 
@@ -64,6 +70,7 @@ public class TroopPlacement : MonoBehaviour
                 if (TroopCounter.MultiplicationMarine >= 1)
                 {
                     TroopCounter.MultiplicationMarine -= 1;
+                    return true;
                 }
                 break;
 
@@ -71,6 +78,7 @@ public class TroopPlacement : MonoBehaviour
                 if (TroopCounter.SubtractionSwordsman >= 1)
                 {
                     TroopCounter.SubtractionSwordsman -= 1;
+                    return true;
                 }
                 break;
 
@@ -78,13 +86,11 @@ public class TroopPlacement : MonoBehaviour
                 if (TroopCounter.AdditionArcher >= 1)
                 {
                     TroopCounter.AdditionArcher -= 1;
+                    return true;
                 }
                 break;
-
-            default:
-                Debug.Log("Too Poor");
-                break;
         }
+        return false;
     }
 
     public void SpawnTroop(int prefabIndex, Tile tile)

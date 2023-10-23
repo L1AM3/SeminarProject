@@ -10,6 +10,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private GridManager grid;
     private bool enemySpawnTile;
     private Tile tile;
+    private List<EnemyBehavior> spawnedEnemies = new();
 
     private void Start()
     {
@@ -29,5 +30,9 @@ public class EnemySpawner : MonoBehaviour
 
         EnemyBehavior localEnemy = Instantiate(Enemy, tile.transform.position, Quaternion.identity, transform);
         localEnemy.SetTarget(interestingTings[Random.Range(0, interestingTings.Count)]);
+        localEnemy.SetGridCoords(tile.gridCoords);
+        localEnemy.SetGrid(grid);
+
+        spawnedEnemies.Add(localEnemy);
     }
 }

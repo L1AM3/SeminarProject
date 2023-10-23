@@ -5,12 +5,13 @@ using UnityEngine;
 public class EnemyBehavior : MonoBehaviour
 {
     public TroopScriptableObject EnemyInfo;
-    public GridManager Grid;
-    [HideInInspector] public Vector2Int TroopGridsCoord;
+    private GridManager Grid;
+    public Vector2Int TroopGridsCoord;
     private BreadthFirstSearch target;
 
     public void SetTarget(BreadthFirstSearch target) => this.target = target;
     public void SetGridCoords(Vector2Int gridCoords) => TroopGridsCoord = gridCoords;
+    public void SetGrid(GridManager manager) => Grid = manager;
 
     private void OnEnable()
     {
