@@ -97,4 +97,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 653b0c713c7084b45adfe46810d629a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyInfo: {fileID: 11400000, guid: 22a798078c758c34f8d604090a0406fc, type: 2}
+  EnemyInfo:
+    Health: 1
+    Damage: 1
+    Movement: 0
+  TroopGridsCoord: {x: 0, y: 0}

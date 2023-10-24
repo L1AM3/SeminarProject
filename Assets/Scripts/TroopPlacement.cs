@@ -14,7 +14,6 @@ public enum TroopType
 public class TroopPlacement : MonoBehaviour
 {
     [SerializeField] private TroopBehavior[] troopPrefabs;
-    [SerializeField] private TroopScriptableObject[] troopData;
     [SerializeField] private GridManager grid;
     private List<TroopBehavior> troops = new List<TroopBehavior>();
     private TroopType troopType = TroopType.None;
@@ -98,7 +97,6 @@ public class TroopPlacement : MonoBehaviour
         TroopBehavior troopBehave = Instantiate(troopPrefabs[prefabIndex], tile.transform.position, Quaternion.identity, transform);
         troopBehave.TroopGridsCoord = tile.gridCoords;
         troopBehave.Grid = grid;
-        troopBehave.TroopInfo = troopData[prefabIndex];
         troopBehave.Placement = this;
         troopBehave.SetType((TroopType) prefabIndex);
 

@@ -9,20 +9,26 @@ public class EnemyBehavior : MonoBehaviour
     public Vector2Int TroopGridsCoord;
     private BreadthFirstSearch target;
 
+    public void DebuffHealth(int debuffval)
+    {
+        if (debuffval >= EnemyInfo.Health)
+        {
+            EnemyInfo.Health = 1;
+            return;
+        }
+
+        EnemyInfo.Health -= debuffval;
+    }
+
+    public void KillEnemy(int damage)
+    {
+        if (damage >= EnemyInfo.Health)
+            Destroy(gameObject);
+    }
+
     public void SetTarget(BreadthFirstSearch target) => this.target = target;
     public void SetGridCoords(Vector2Int gridCoords) => TroopGridsCoord = gridCoords;
     public void SetGrid(GridManager manager) => Grid = manager;
-
-    private void OnEnable()
-    {
-        TroopManager.TroopMoved += MoveEnemy;
-        
-    }
-
-    private void OnDisable()
-    {
-        TroopManager.TroopMoved -= MoveEnemy;
-    }
 
     public Vector2Int GetMovementDir()
     {
@@ -40,6 +46,18 @@ public class EnemyBehavior : MonoBehaviour
         {
             TroopGridsCoord += dir;
             transform.position = theFuckingTile.transform.position;
+            transform.parent = theFuckingTile.transform;
+
+            AttackTarget();
+        }
+    }
+
+    public void AttackTarget()
+    {
+        if (target.GetPathChart()[TroopGridsCoord] == new Vector2Int(-1,-1))
+        {
+            target.gameObject.GetComponent<TroopBehavior>().TakeDamage(EnemyInfo.Damage);
+            Destroy(gameObject);
         }
     }
 }

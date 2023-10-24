@@ -6,11 +6,16 @@ public class TroopBehavior : MonoBehaviour
 {
     [HideInInspector] public TroopPlacement Placement;
     [HideInInspector] public GridManager Grid;
-    [HideInInspector] public TroopScriptableObject TroopInfo;
+    public TroopScriptableObject TroopInfo;
     [HideInInspector] public Vector2Int TroopGridsCoord;
     [HideInInspector] public bool IsTroopSelected = false;
     [SerializeField] private int troopStackCounter;
     private TroopType troopType = TroopType.None;
+
+    private void Start()
+    {
+        TroopManager.Invoke();
+    }
 
     private void Update()
     {
@@ -38,7 +43,7 @@ public class TroopBehavior : MonoBehaviour
 
         Tile theFuckingTile = Grid.GetTileFromDictionary(TroopGridsCoord + dir);
 
-        if (theFuckingTile != null)
+        if (theFuckingTile != null && TroopAttacking(theFuckingTile))
         {
             Grid.GetTileFromDictionary(TroopGridsCoord).SetTroop(null);
 
@@ -61,4 +66,41 @@ public class TroopBehavior : MonoBehaviour
 
     public TroopType GetTroopType() => troopType;
     public void SetType(TroopType type) => troopType = type;
+
+    public bool TroopAttacking(Tile tile)
+    {
+        var Enemy = tile.GetComponentInChildren<EnemyBehavior>();
+
+        if (Enemy == null)
+            return true;
+
+        if (troopType == TroopType.AdditionArcher)
+        {
+            Enemy.KillEnemy(TroopInfo.Damage);
+
+            if (Enemy == null)
+                return true;
+
+            return false;
+        }
+
+        if (troopType == TroopType.SubtractionSwordsman)
+        {
+            Enemy.DebuffHealth(TroopInfo.Damage);
+            return false;
+        }
+        return false;
+    }
+
+    public void TakeDamage(int damage)
+    {
+        Debug.Log(TroopInfo.Health);
+        TroopInfo.Health -= damage;
+        //Debug.Log(TroopInfo.Health.ToString());
+
+        if (TroopInfo.Health <= 0)
+        {
+            Debug.Log("Player DeD");
+        }
+    }
 }

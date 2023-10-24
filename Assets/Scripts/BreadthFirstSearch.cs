@@ -27,7 +27,7 @@ public class BreadthFirstSearch : MonoBehaviour
         //Adds current position to the frontier, dc, pc
         frontier.Enqueue(currentPos);
         distanceChart.Add(currentPos, 0);
-        pathChart.Add(currentPos, currentPos + Vector2Int.down);
+        pathChart.Add(currentPos, new Vector2Int(-1, -1));
 
         //goes through each tile in the frontier
         while(frontier.Count > 0)

@@ -101,7 +101,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Placement: {fileID: 0}
   Grid: {fileID: 0}
-  TroopInfo: {fileID: 11400000, guid: fcc51d8d46f19ef41b93f97e2ed2f142, type: 2}
+  TroopInfo:
+    Health: 2
+    Damage: 1
+    Movement: 0
   TroopGridsCoord: {x: 0, y: 0}
   IsTroopSelected: 0
   troopStackCounter: 0

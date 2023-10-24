@@ -1,19 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "ScriptableObject/TroopType")]
-public class TroopScriptableObject : ScriptableObject
+[Serializable]
+public class TroopScriptableObject
 {
-    public int HitsCanTake;
+    public int Health;
     public int Damage;
-    public int Defense;
     public int Movement;
-    public int Range;
 
-
-    public TroopScriptableObject(TroopScriptableObject obj)
-    {
-        HitsCanTake = obj.HitsCanTake;
-    }
 }

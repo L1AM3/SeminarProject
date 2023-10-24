@@ -14,21 +14,49 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
-        TroopManager.TroopMoved += SpawnEnemyNoTile;
+        TroopManager.TroopMoved += ManageEnemyBehavior;
+    }
+
+    private void ManageEnemyBehavior()
+    {
+        if (Random.Range(0, spawnedEnemies.Count + 1) == 0)
+        {
+            SpawnEnemyNoTile();
+        }
+        else
+        {
+            StartCoroutine(Co_MoveAllEnemies());
+        }
+    }
+
+    private IEnumerator Co_MoveAllEnemies()
+    {
+        List<EnemyBehavior> enemies = new(spawnedEnemies);
+
+        foreach (var enemy in enemies)
+        {
+            if(enemy == null)
+            {
+                spawnedEnemies.Remove(enemy);
+                continue;
+            }
+            yield return new WaitForSeconds(0.5f);
+            enemy.MoveEnemy();
+        }
     }
 
     public void SpawnEnemyNoTile()
     {
         SpawnEnemy(grid.GetTileFromDictionary(new Vector2Int(grid.GetWidth() - 1, Random.Range(0, grid.GetHeight()))));
     }
-    // Start is called before the first frame update
+
     void SpawnEnemy(Tile tile)
     {
         List<BreadthFirstSearch> interestingTings = new();
         interestingTings.AddRange(GetComponentsInChildren<BreadthFirstSearch>());
         if (interestingTings.Count == 0) return;
 
-        EnemyBehavior localEnemy = Instantiate(Enemy, tile.transform.position, Quaternion.identity, transform);
+        EnemyBehavior localEnemy = Instantiate(Enemy, tile.transform.position, Quaternion.identity, tile.transform);
         localEnemy.SetTarget(interestingTings[Random.Range(0, interestingTings.Count)]);
         localEnemy.SetGridCoords(tile.gridCoords);
         localEnemy.SetGrid(grid);
