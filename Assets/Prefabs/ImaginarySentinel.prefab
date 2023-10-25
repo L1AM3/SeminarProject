@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyInfo:
-    Health: 1
+    Health: 2
     Damage: 1
     Movement: 0
   TroopGridsCoord: {x: 0, y: 0}

@@ -15,6 +15,7 @@ public class TroopPlacement : MonoBehaviour
 {
     [SerializeField] private TroopBehavior[] troopPrefabs;
     [SerializeField] private GridManager grid;
+    [SerializeField] private int damageCap;
     private List<TroopBehavior> troops = new List<TroopBehavior>();
     private TroopType troopType = TroopType.None;
 
@@ -37,11 +38,13 @@ public class TroopPlacement : MonoBehaviour
         if (troopType == TroopType.None)
             return;
 
-        if (tile.HasTroop() && tile.GetTroopType().GetTroopType() == troopType)
+        TroopBehavior troopBehavior = tile.GetComponentInChildren<TroopBehavior>();
+        if (troopBehavior && troopBehavior.GetTroopType() == troopType)
         {
+            if (troopBehavior.TroopInfo.Damage > damageCap) return;
             if (DecreaseTroopCount(troopType))
             {
-                tile.GetTroopType().TroopStacking();
+                troopBehavior.TroopStacking();
             }
 
             return;
@@ -94,7 +97,7 @@ public class TroopPlacement : MonoBehaviour
 
     public void SpawnTroop(int prefabIndex, Tile tile)
     {
-        TroopBehavior troopBehave = Instantiate(troopPrefabs[prefabIndex], tile.transform.position, Quaternion.identity, transform);
+        TroopBehavior troopBehave = Instantiate(troopPrefabs[prefabIndex], tile.transform.position, Quaternion.identity, tile.transform);
         troopBehave.TroopGridsCoord = tile.gridCoords;
         troopBehave.Grid = grid;
         troopBehave.Placement = this;
@@ -102,7 +105,7 @@ public class TroopPlacement : MonoBehaviour
 
         troops.Add(troopBehave);
 
-        tile.SetTroop(troopBehave);
+        TroopManager.InvokeTroopTurnFinished();
     }
 
     public void SelectTroop(TroopBehavior troop)

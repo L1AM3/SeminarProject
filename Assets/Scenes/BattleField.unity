@@ -4753,6 +4753,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 803084660}
     - target: {fileID: 25587345918118996, guid: 6bb2a79c821bf734ebc1a1ba6b7be020, type: 3}
+      propertyPath: damageCap
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 25587345918118996, guid: 6bb2a79c821bf734ebc1a1ba6b7be020, type: 3}
       propertyPath: troopData.Array.size
       value: 4
       objectReference: {fileID: 0}

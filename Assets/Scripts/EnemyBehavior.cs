@@ -20,10 +20,22 @@ public class EnemyBehavior : MonoBehaviour
         EnemyInfo.Health -= debuffval;
     }
 
-    public void KillEnemy(int damage)
+    public void DebuffDivHealth(int debuffval)
+    {
+        Debug.Assert(debuffval > 0);
+        float newHealth = (float) EnemyInfo.Health / debuffval;
+        EnemyInfo.Health = (int) Mathf.Ceil(newHealth);
+    }
+
+    public bool KillEnemy(int damage)
     {
         if (damage >= EnemyInfo.Health)
+        {
             Destroy(gameObject);
+            return true;
+        }
+
+        return false;
     }
 
     public void SetTarget(BreadthFirstSearch target) => this.target = target;
@@ -39,6 +51,14 @@ public class EnemyBehavior : MonoBehaviour
 
     public void MoveEnemy()
     {
+        if (target == null)
+        {
+            target = TroopManager.troops[Random.Range(0, TroopManager.troops.Count)].GetComponent<BreadthFirstSearch>();
+
+            //if there are no targets we return out
+            if (target == null) return;
+        }
+
         Vector2Int dir = GetMovementDir();
         Tile theFuckingTile = Grid.GetTileFromDictionary(TroopGridsCoord + dir);
 

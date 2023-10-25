@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,23 +12,33 @@ public class TroopBehavior : MonoBehaviour
     [HideInInspector] public bool IsTroopSelected = false;
     [SerializeField] private int troopStackCounter;
     private TroopType troopType = TroopType.None;
+    private int currentMoveCount = 0;
+    private bool isCurrentTurn = false;
 
     private void Start()
     {
-        TroopManager.Invoke();
+        TroopManager.InvokeTroopSpawned(this);
+        GetComponent<BreadthFirstSearch>().BFS(TroopGridsCoord, Grid);
+
+        Placement.GetComponent<EnemySpawner>().EnemyTurnFinished += ChangeTurn;
+    }
+
+    private void ChangeTurn()
+    {
+        isCurrentTurn = true;
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.RightArrow) && IsTroopSelected)
+        if (Input.GetKeyDown(KeyCode.RightArrow) && IsTroopSelected && isCurrentTurn)
         {
             TroopMovement(new Vector2Int(1, 0));
         }
-        else if (Input.GetKeyDown(KeyCode.UpArrow) && IsTroopSelected)
+        else if (Input.GetKeyDown(KeyCode.UpArrow) && IsTroopSelected && isCurrentTurn)
         {
             TroopMovement(new Vector2Int(0, -1));
         }
-        else if (Input.GetKeyDown(KeyCode.DownArrow) && IsTroopSelected)
+        else if (Input.GetKeyDown(KeyCode.DownArrow) && IsTroopSelected && isCurrentTurn)
         {
             TroopMovement(new Vector2Int(0, 1));
         }
@@ -45,22 +56,29 @@ public class TroopBehavior : MonoBehaviour
 
         if (theFuckingTile != null && TroopAttacking(theFuckingTile))
         {
-            Grid.GetTileFromDictionary(TroopGridsCoord).SetTroop(null);
-
             TroopGridsCoord += dir;
             transform.position = theFuckingTile.transform.position;
             GetComponent<Collider2D>().enabled = false;
             GetComponent<Collider2D>().enabled = true;
 
             GetComponent<BreadthFirstSearch>().BFS(TroopGridsCoord, Grid);
-        }
 
-        TroopManager.Invoke();
+            transform.parent = theFuckingTile.transform;
+            currentMoveCount++;
+
+            if(currentMoveCount >= TroopInfo.Movement)
+            {
+                isCurrentTurn = false;
+                TroopManager.InvokeTroopTurnFinished();
+                currentMoveCount = 0;
+            }
+        }
     }
 
     public void TroopStacking()
     {
         troopStackCounter++;
+        TroopInfo.Damage++;
         Debug.Log(troopStackCounter.ToString());
     }
 
@@ -69,16 +87,21 @@ public class TroopBehavior : MonoBehaviour
 
     public bool TroopAttacking(Tile tile)
     {
+        if (troopType == TroopType.MultiplicationMarine)
+        {
+
+            return !TroopBuff(tile); ;
+        }
+
         var Enemy = tile.GetComponentInChildren<EnemyBehavior>();
 
         if (Enemy == null)
             return true;
 
+
         if (troopType == TroopType.AdditionArcher)
         {
-            Enemy.KillEnemy(TroopInfo.Damage);
-
-            if (Enemy == null)
+            if (Enemy.KillEnemy(TroopInfo.Damage))
                 return true;
 
             return false;
@@ -87,9 +110,33 @@ public class TroopBehavior : MonoBehaviour
         if (troopType == TroopType.SubtractionSwordsman)
         {
             Enemy.DebuffHealth(TroopInfo.Damage);
+            TroopManager.RemoveTroop(this);
+            Destroy(gameObject);
             return false;
         }
+
+        if (troopType == TroopType.DivisionDogFighter)
+        {
+            Enemy.DebuffDivHealth(TroopInfo.Damage);
+            TroopManager.RemoveTroop(this);
+            Destroy(gameObject);
+            return false;
+        }
+
         return false;
+    }
+
+    private bool TroopBuff(Tile tile)
+    {
+        TroopBehavior otherTroop = tile.GetComponentInChildren<TroopBehavior>();
+
+        if(otherTroop == null) return false;
+
+        otherTroop.ScaleDamage(TroopInfo.Damage);
+
+        TroopManager.RemoveTroop(this);
+        Destroy(gameObject);
+        return true;
     }
 
     public void TakeDamage(int damage)
@@ -100,7 +147,10 @@ public class TroopBehavior : MonoBehaviour
 
         if (TroopInfo.Health <= 0)
         {
-            Debug.Log("Player DeD");
+            TroopManager.RemoveTroop(this);
+            Destroy(gameObject);
         }
     }
+
+    public void ScaleDamage(int addedDamage) => TroopInfo.Damage *= addedDamage;
 }
