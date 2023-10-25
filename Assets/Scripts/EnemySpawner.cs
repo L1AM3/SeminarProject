@@ -51,8 +51,9 @@ public class EnemySpawner : MonoBehaviour
 
     public IEnumerator Co_SpawnEnemyNoTile()
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.25f);
         SpawnEnemy(grid.GetTileFromDictionary(new Vector2Int(grid.GetWidth() - 1, UnityEngine.Random.Range(0, grid.GetHeight()))));
+        yield return new WaitForSeconds(1f);
         EnemyTurnFinished?.Invoke();
     }
 

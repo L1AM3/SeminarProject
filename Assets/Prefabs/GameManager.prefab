@@ -50,8 +50,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  troopData: []
   grid: {fileID: 0}
+  damageCap: 0
 --- !u!114 &3791185189237740903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64,6 +64,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43b4c52d6aca79241ba6615dbe2ab72f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemy: {fileID: 5113873710783399125, guid: 08f8ed030c9f2874bb37e4a9ebea41f0, type: 3}
+  Enemy: {fileID: 5580262782699340446, guid: 08f8ed030c9f2874bb37e4a9ebea41f0, type: 3}
   SpawnDelay: 5
   grid: {fileID: 0}
