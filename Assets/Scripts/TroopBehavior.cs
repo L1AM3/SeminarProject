@@ -12,7 +12,7 @@ public class TroopBehavior : MonoBehaviour
     [HideInInspector] public bool IsTroopSelected = false;
     [SerializeField] private int troopStackCounter;
     private TroopType troopType = TroopType.None;
-    private int currentMoveCount = 0;
+    [HideInInspector] public int currentMoveCount = 0;
     private bool isCurrentTurn = false;
 
     private void Start()

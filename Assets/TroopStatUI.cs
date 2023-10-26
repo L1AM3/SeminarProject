@@ -16,6 +16,6 @@ public class TroopStatUI : MonoBehaviour
     {
         TroopHealthTxt.text = TroopInformation.TroopInfo.Health.ToString();
         TroopDamageTxt.text = TroopInformation.TroopInfo.Damage.ToString();
-        TroopMovesTxt.text = TroopInformation.TroopInfo.Movement.ToString();
+        TroopMovesTxt.text = (TroopInformation.TroopInfo.Movement - TroopInformation.currentMoveCount).ToString();
     }
 }

@@ -17,8 +17,8 @@ public static class MathProblemGenerator
 
     public static void GenerateMathProblem()
     {
-        randomNumberOne = UnityEngine.Random.Range(1, 30);
-        randomNumberTwo = UnityEngine.Random.Range(1, 30);
+        randomNumberOne = UnityEngine.Random.Range(1, 12);
+        randomNumberTwo = UnityEngine.Random.Range(1, 12);
 
         MathProblem = (randomNumberOne.ToString());
         MathProblem += (randomSymbol[symbolIndex].ToString());

@@ -738,6 +738,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UI: {fileID: 1157366870}
+  MathInputField: {fileID: 1642458421}
   input: {fileID: 285517480}
 --- !u!1 &940444749
 GameObject:
