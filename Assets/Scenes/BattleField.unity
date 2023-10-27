@@ -5505,7 +5505,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UI: {fileID: 1922791868}
-  MathInputField: {fileID: 0}
+  MathInputField: {fileID: 1669260672}
   input: {fileID: 190837955}
 --- !u!1001 &1252212275243530867
 PrefabInstance:
