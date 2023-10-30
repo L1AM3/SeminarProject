@@ -21,6 +21,7 @@ public class TroopBehavior : MonoBehaviour
         GetComponent<BreadthFirstSearch>().BFS(TroopGridsCoord, Grid);
 
         Placement.GetComponent<EnemySpawner>().EnemyTurnFinished += ChangeTurn;
+        Grid.TileSelected += CanMoveTroop;
     }
 
     private void ChangeTurn()
@@ -44,17 +45,21 @@ public class TroopBehavior : MonoBehaviour
         }
     }
 
-    private void OnMouseDown()
+    public void CanMoveTroop(Tile tile)
     {
-        Placement.SelectTroop(this);
+        if(tile.gridCoords == TroopGridsCoord)
+        {
+            IsTroopSelected = true;
+        }
     }
 
     public void TroopMovement(Vector2Int dir)
     {
+        if (GameManager.Instance.IsTroopPlacing()) return;
 
         Tile theFuckingTile = Grid.GetTileFromDictionary(TroopGridsCoord + dir);
 
-        if (theFuckingTile != null && TroopAttacking(theFuckingTile))
+        if (theFuckingTile != null && TroopAttacking(theFuckingTile) && !TroopOnTile(theFuckingTile))
         {
             TroopGridsCoord += dir;
             transform.position = theFuckingTile.transform.position;
@@ -150,6 +155,15 @@ public class TroopBehavior : MonoBehaviour
             TroopManager.RemoveTroop(this);
             Destroy(gameObject);
         }
+    }
+
+    public bool TroopOnTile(Tile tile)
+    {
+        TroopBehavior otherTroop = tile.GetComponentInChildren<TroopBehavior>();
+
+        if (otherTroop == null) return false;
+
+        return true;
     }
 
     public void ScaleDamage(int addedDamage) => TroopInfo.Damage *= addedDamage;

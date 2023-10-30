@@ -62,7 +62,7 @@ public class EnemyBehavior : MonoBehaviour
         Vector2Int dir = GetMovementDir();
         Tile theFuckingTile = Grid.GetTileFromDictionary(TroopGridsCoord + dir);
 
-        if (theFuckingTile != null)
+        if (theFuckingTile != null && !EnemyOnTile(theFuckingTile))
         {
             TroopGridsCoord += dir;
             transform.position = theFuckingTile.transform.position;
@@ -79,5 +79,14 @@ public class EnemyBehavior : MonoBehaviour
             target.gameObject.GetComponent<TroopBehavior>().TakeDamage(EnemyInfo.Damage);
             Destroy(gameObject);
         }
+    }
+
+    public bool EnemyOnTile(Tile tile)
+    {
+        EnemyBehavior otherEnemy = tile.GetComponentInChildren<EnemyBehavior>();
+
+        if (otherEnemy == null) return false;
+
+        return true;
     }
 }

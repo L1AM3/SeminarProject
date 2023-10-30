@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1096097054546671681}
   - component: {fileID: 25587345918118996}
   - component: {fileID: 3791185189237740903}
+  - component: {fileID: 3035551326156578878}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -67,3 +68,16 @@ MonoBehaviour:
   Enemy: {fileID: 5580262782699340446, guid: 08f8ed030c9f2874bb37e4a9ebea41f0, type: 3}
   SpawnDelay: 5
   grid: {fileID: 0}
+--- !u!114 &3035551326156578878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 347948641232801456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84889a6f45da53a458ac483dadc4c9ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isTroopPlacing: 1

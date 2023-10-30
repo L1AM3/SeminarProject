@@ -31,6 +31,8 @@ public class TroopPlacement : MonoBehaviour
 
     private void OnTileSelected(Tile tile)
     {
+        if (!GameManager.Instance.IsTroopPlacing()) return;
+
         if (tile.gridCoords.x != 0)
             return;
 
