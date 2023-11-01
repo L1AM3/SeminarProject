@@ -5,10 +5,11 @@ using UnityEngine;
 
 public static class TroopCounter
 {
-    public static int AdditionArcher;
-    public static int SubtractionSwordsman;
-    public static int MultiplicationMarine;
-    public static int DivisionDogFighter;
+    //5 is test num set it back to 0 idiot
+    public static int AdditionArcher = 5;
+    public static int SubtractionSwordsman = 5;
+    public static int MultiplicationMarine = 5;
+    public static int DivisionDogFighter = 5;
 
     public static void TroopAdder()
     {

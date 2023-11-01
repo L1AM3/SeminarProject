@@ -185,6 +185,7 @@ GameObject:
   - component: {fileID: -3622462818876254535}
   - component: {fileID: -2519625067481653763}
   - component: {fileID: 7496151391874218735}
+  - component: {fileID: 2256749670328117285}
   m_Layer: 7
   m_Name: DivisionDogFighter
   m_TagString: Troop
@@ -279,10 +280,11 @@ MonoBehaviour:
   TroopInfo:
     Health: 2
     Damage: 1
-    Movement: 1
+    Movement: 10
   TroopGridsCoord: {x: 0, y: 0}
   IsTroopSelected: 0
   troopStackCounter: 0
+  currentMoveCount: 0
 --- !u!58 &-3622462818876254535
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -346,6 +348,33 @@ MonoBehaviour:
   TroopHealthTxt: {fileID: 1988068452958784986}
   TroopDamageTxt: {fileID: 7747985859180806813}
   TroopMovesTxt: {fileID: 6218526545335000752}
+--- !u!50 &2256749670328117285
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2798963127463348457}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &4874364902207483757
 GameObject:
   m_ObjectHideFlags: 0

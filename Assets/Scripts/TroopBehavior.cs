@@ -61,11 +61,12 @@ public class TroopBehavior : MonoBehaviour
 
         if (theFuckingTile != null && TroopAttacking(theFuckingTile) && !TroopOnTile(theFuckingTile))
         {
-            TroopGridsCoord += dir;
+            TroopGridsCoord = theFuckingTile.gridCoords;
             transform.position = theFuckingTile.transform.position;
             GetComponent<Collider2D>().enabled = false;
             GetComponent<Collider2D>().enabled = true;
 
+            theFuckingTile.SetWalkable(false);
             GetComponent<BreadthFirstSearch>().BFS(TroopGridsCoord, Grid);
 
             transform.parent = theFuckingTile.transform;
@@ -84,7 +85,6 @@ public class TroopBehavior : MonoBehaviour
     {
         troopStackCounter++;
         TroopInfo.Damage++;
-        Debug.Log(troopStackCounter.ToString());
     }
 
     public TroopType GetTroopType() => troopType;
@@ -146,7 +146,7 @@ public class TroopBehavior : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        Debug.Log(TroopInfo.Health);
+        //Debug.Log(TroopInfo.Health);
         TroopInfo.Health -= damage;
         //Debug.Log(TroopInfo.Health.ToString());
 

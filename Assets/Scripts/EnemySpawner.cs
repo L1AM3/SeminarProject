@@ -8,10 +8,7 @@ public class EnemySpawner : MonoBehaviour
     public EnemyBehavior Enemy;
     public float SpawnDelay;
     public event Action EnemyTurnFinished;
-    private float SpawnTimer;
     [SerializeField] private GridManager grid;
-    private bool enemySpawnTile;
-    private Tile tile;
     private List<EnemyBehavior> spawnedEnemies = new();
 
     private void Start()
@@ -66,6 +63,12 @@ public class EnemySpawner : MonoBehaviour
         foreach(TroopBehavior troop in TroopManager.troops)
         {
             interestingTings.Add(troop.GetComponent<BreadthFirstSearch>());
+        }
+
+        //Adding all the home bases (x is 0) to the interesting list
+        for(int i = 0; i < grid.GetHeight(); i++)
+        {
+            interestingTings.Add(grid.GetTileFromDictionary(new Vector2Int(0, i)).GetComponent<BreadthFirstSearch>());
         }
 
         if (interestingTings.Count == 0) return false;

@@ -14,7 +14,7 @@ public class BreadthFirstSearch : MonoBehaviour
         //Make sure BFS can take place, grid needs to exist, is start position in grid, is tile walkable
         if (gridManager == null) return;
         if (gridManager.GetTileFromDictionary(startPos) == null) return;
-        if (!gridManager.GetTileFromDictionary(startPos).IsWalkable()) return;
+        //if (!gridManager.GetTileFromDictionary(startPos).IsWalkable()) return;
 
         Vector2Int currentPos = startPos;
         Queue<Vector2Int> frontier = new Queue<Vector2Int>();
@@ -37,8 +37,8 @@ public class BreadthFirstSearch : MonoBehaviour
             //checking all four directions of tiles from current position
             foreach (Vector2Int direction in directions)
             {
-                if (frontier.Count == 0)
-                    Debug.Log(distanceChart[currentPos]);
+                if (frontier.Count == 0) ;
+                    //Debug.Log(distanceChart[currentPos]);
 
                 //Ensuring tile hasn't already been explored, making sure tile is pathable
                 if (distanceChart.ContainsKey(currentPos + direction)) continue;

@@ -5299,6 +5299,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3035551326156578878, guid: 6bb2a79c821bf734ebc1a1ba6b7be020, type: 3}
+      propertyPath: HomeBaseHealth
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3035551326156578878, guid: 6bb2a79c821bf734ebc1a1ba6b7be020, type: 3}
+      propertyPath: EnemyBaseHealth
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3791185189237740903, guid: 6bb2a79c821bf734ebc1a1ba6b7be020, type: 3}
       propertyPath: grid
       value: 
@@ -5307,6 +5315,10 @@ PrefabInstance:
       propertyPath: Enemy
       value: 
       objectReference: {fileID: 5580262782699340446, guid: 08f8ed030c9f2874bb37e4a9ebea41f0, type: 3}
+    - target: {fileID: 3791185189237740903, guid: 6bb2a79c821bf734ebc1a1ba6b7be020, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

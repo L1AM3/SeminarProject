@@ -17,11 +17,7 @@ public class Tile : MonoBehaviour
     public void SetGridCords(Vector2Int gridCoordinates) => gridCoords = gridCoordinates;
     public Vector2Int GetGridCords() => gridCoords;
     public bool IsWalkable() => isWalkable;
-
-    public void Update()
-    {
-        
-    }
+    public void SetWalkable(bool walkable) => isWalkable = walkable;
 
     public void Init(bool isOffset)
     {

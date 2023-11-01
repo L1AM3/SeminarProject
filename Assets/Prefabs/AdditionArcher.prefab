@@ -185,6 +185,7 @@ GameObject:
   - component: {fileID: -8820002442976531567}
   - component: {fileID: -1201272999545983840}
   - component: {fileID: 4274077601975050612}
+  - component: {fileID: -6036425654137615278}
   m_Layer: 7
   m_Name: AdditionArcher
   m_TagString: Troop
@@ -279,10 +280,11 @@ MonoBehaviour:
   TroopInfo:
     Health: 2
     Damage: 1
-    Movement: 2
+    Movement: 10
   TroopGridsCoord: {x: 0, y: 0}
   IsTroopSelected: 0
   troopStackCounter: 0
+  currentMoveCount: 0
 --- !u!58 &-8820002442976531567
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -312,7 +314,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -346,6 +348,33 @@ MonoBehaviour:
   TroopHealthTxt: {fileID: 5196249972605045334}
   TroopDamageTxt: {fileID: 1705702229771360197}
   TroopMovesTxt: {fileID: 1882452924671738182}
+--- !u!50 &-6036425654137615278
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2585800145787811461}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &5755290109802517634
 GameObject:
   m_ObjectHideFlags: 0
