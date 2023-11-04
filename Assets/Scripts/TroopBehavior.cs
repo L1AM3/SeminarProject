@@ -7,13 +7,13 @@ public class TroopBehavior : MonoBehaviour
 {
     [HideInInspector] public TroopPlacement Placement;
     [HideInInspector] public GridManager Grid;
-    public TroopScriptableObject TroopInfo;
+    public TroopData TroopInfo;
     [HideInInspector] public Vector2Int TroopGridsCoord;
     [HideInInspector] public bool IsTroopSelected = false;
     [SerializeField] private int troopStackCounter;
     private TroopType troopType = TroopType.None;
     [HideInInspector] public int currentMoveCount = 0;
-    private bool isCurrentTurn = false;
+    private bool isCurrentTurn = true;
 
     private void Start()
     {
@@ -26,6 +26,7 @@ public class TroopBehavior : MonoBehaviour
 
     private void ChangeTurn()
     {
+        currentMoveCount = 0;
         isCurrentTurn = true;
     }
 
@@ -49,7 +50,7 @@ public class TroopBehavior : MonoBehaviour
     {
         if(tile.gridCoords == TroopGridsCoord)
         {
-            IsTroopSelected = true;
+            TroopManager.SetSelectedTroop(this);
         }
     }
 
@@ -72,11 +73,9 @@ public class TroopBehavior : MonoBehaviour
             transform.parent = theFuckingTile.transform;
             currentMoveCount++;
 
-            if(currentMoveCount >= TroopInfo.Movement)
-            {
+            if (currentMoveCount >= TroopInfo.Movement)
+            { 
                 isCurrentTurn = false;
-                TroopManager.InvokeTroopTurnFinished();
-                currentMoveCount = 0;
             }
         }
     }
@@ -147,10 +146,10 @@ public class TroopBehavior : MonoBehaviour
     public void TakeDamage(int damage)
     {
         //Debug.Log(TroopInfo.Health);
-        TroopInfo.Health -= damage;
+        TroopInfo.Damage -= damage;
         //Debug.Log(TroopInfo.Health.ToString());
 
-        if (TroopInfo.Health <= 0)
+        if (TroopInfo.Damage <= 0)
         {
             TroopManager.RemoveTroop(this);
             Destroy(gameObject);

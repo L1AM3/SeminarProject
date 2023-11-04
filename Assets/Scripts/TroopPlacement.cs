@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,12 +17,20 @@ public class TroopPlacement : MonoBehaviour
     [SerializeField] private TroopBehavior[] troopPrefabs;
     [SerializeField] private GridManager grid;
     [SerializeField] private int damageCap;
+    [SerializeField] private int maxTurnSpawn;
     private List<TroopBehavior> troops = new List<TroopBehavior>();
     private TroopType troopType = TroopType.None;
+    private int currentTroopsSpawned = 0;
 
     private void OnEnable()
     {
         grid.TileSelected += OnTileSelected;
+        TroopManager.TroopTurnFinished += ResetTroopCounter;
+    }
+
+    private void ResetTroopCounter()
+    {
+        currentTroopsSpawned = 0;
     }
 
     private void OnDisable()
@@ -36,17 +45,23 @@ public class TroopPlacement : MonoBehaviour
         if (tile.gridCoords.x != 0)
             return;
 
-        Debug.Log("im in");
+        if (currentTroopsSpawned >= maxTurnSpawn) return;
+
         if (troopType == TroopType.None)
             return;
+
+
+        Debug.Log("im in");
 
         TroopBehavior troopBehavior = tile.GetComponentInChildren<TroopBehavior>();
         if (troopBehavior && troopBehavior.GetTroopType() == troopType)
         {
             if (troopBehavior.TroopInfo.Damage > damageCap) return;
+
             if (DecreaseTroopCount(troopType))
             {
                 troopBehavior.TroopStacking();
+                currentTroopsSpawned++;
             }
 
             return;
@@ -106,8 +121,7 @@ public class TroopPlacement : MonoBehaviour
         troopBehave.SetType((TroopType) prefabIndex);
 
         troops.Add(troopBehave);
-
-        TroopManager.InvokeTroopTurnFinished();
+        currentTroopsSpawned++;
     }
 
     public void SelectTroop(TroopBehavior troop)

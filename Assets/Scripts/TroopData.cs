@@ -4,9 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class TroopScriptableObject
+public class TroopData
 {
-    public int Health;
     public int Damage;
     public int Movement;
 

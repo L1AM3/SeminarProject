@@ -32,4 +32,14 @@ public static class TroopManager
     {
         TroopTurnFinished?.Invoke();
     }
+
+    public static void SetSelectedTroop(TroopBehavior troop)
+    {
+        foreach(var t in troops)
+        {
+            t.IsTroopSelected = false;
+        }
+
+        troop.IsTroopSelected = true;
+    }
 }

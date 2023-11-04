@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
@@ -48,8 +49,14 @@ public class EnemySpawner : MonoBehaviour
 
     public IEnumerator Co_SpawnEnemyNoTile()
     {
-        yield return new WaitForSeconds(0.25f);
-        SpawnEnemy(grid.GetTileFromDictionary(new Vector2Int(grid.GetWidth() - 1, UnityEngine.Random.Range(0, grid.GetHeight()))));
+        int numEnemies = UnityEngine.Random.Range(1, 4);
+
+        for (int i = 0; i < numEnemies; i++)
+        {
+            yield return new WaitForSeconds(0.25f);
+            SpawnEnemy(grid.GetTileFromDictionary(new Vector2Int(grid.GetWidth() - 1, UnityEngine.Random.Range(0, grid.GetHeight()))));
+        }
+
         yield return new WaitForSeconds(1f);
         EnemyTurnFinished?.Invoke();
     }

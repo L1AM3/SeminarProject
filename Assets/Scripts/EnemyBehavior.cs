@@ -4,32 +4,32 @@ using UnityEngine;
 
 public class EnemyBehavior : MonoBehaviour
 {
-    public TroopScriptableObject EnemyInfo;
+    public TroopData EnemyInfo;
     private GridManager Grid;
     public Vector2Int TroopGridsCoord;
     private BreadthFirstSearch target;
 
     public void DebuffHealth(int debuffval)
     {
-        if (debuffval >= EnemyInfo.Health)
+        if (debuffval >= EnemyInfo.Damage)
         {
-            EnemyInfo.Health = 1;
+            EnemyInfo.Damage = 1;
             return;
         }
 
-        EnemyInfo.Health -= debuffval;
+        EnemyInfo.Damage -= debuffval;
     }
 
     public void DebuffDivHealth(int debuffval)
     {
         Debug.Assert(debuffval > 0);
-        float newHealth = (float) EnemyInfo.Health / debuffval;
-        EnemyInfo.Health = (int) Mathf.Ceil(newHealth);
+        float newHealth = (float) EnemyInfo.Damage / debuffval;
+        EnemyInfo.Damage = (int) Mathf.Ceil(newHealth);
     }
 
     public bool KillEnemy(int damage)
     {
-        if (damage >= EnemyInfo.Health)
+        if (damage >= EnemyInfo.Damage)
         {
             Destroy(gameObject);
             return true;

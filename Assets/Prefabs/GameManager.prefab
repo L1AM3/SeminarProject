@@ -53,6 +53,7 @@ MonoBehaviour:
   - {fileID: 0}
   grid: {fileID: 0}
   damageCap: 0
+  maxTurnSpawn: 3
 --- !u!114 &3791185189237740903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80,4 +81,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84889a6f45da53a458ac483dadc4c9ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EnemyBaseHealth: 0
+  HomeBaseHealth: 0
   isTroopPlacing: 1
