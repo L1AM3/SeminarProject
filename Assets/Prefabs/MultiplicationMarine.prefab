@@ -81,8 +81,8 @@ SpriteRenderer:
   m_SortingLayerID: -337594753
   m_SortingLayer: -1
   m_SortingOrder: 5
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0, g: 1, b: 0.8032925, a: 1}
+  m_Sprite: {fileID: 21300000, guid: f4a1ee502e4ac7a4b921c56ccdff5976, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -107,7 +107,6 @@ MonoBehaviour:
   Placement: {fileID: 0}
   Grid: {fileID: 0}
   TroopInfo:
-    Health: 2
     Damage: 1
     Movement: 1
   TroopGridsCoord: {x: 0, y: 0}
@@ -174,7 +173,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TroopInformation: {fileID: 1586051962567014111}
-  TroopHealthTxt: {fileID: 7688969907731392047}
   TroopDamageTxt: {fileID: 1755384985317417049}
   TroopMovesTxt: {fileID: 8105056657596248657}
 --- !u!50 &2723690971852255157
