@@ -64,8 +64,8 @@ public class TroopBehavior : MonoBehaviour
         {
             TroopGridsCoord = theFuckingTile.gridCoords;
             transform.position = theFuckingTile.transform.position;
-            GetComponent<Collider2D>().enabled = false;
-            GetComponent<Collider2D>().enabled = true;
+            //GetComponent<Collider2D>().enabled = false;
+            //GetComponent<Collider2D>().enabled = true;
 
             theFuckingTile.SetWalkable(false);
             GetComponent<BreadthFirstSearch>().BFS(TroopGridsCoord, Grid);
