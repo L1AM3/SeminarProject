@@ -8,5 +8,4 @@ public class TroopData
 {
     public int Damage;
     public int Movement;
-
 }
