@@ -47,13 +47,14 @@ public class TroopPlacement : MonoBehaviour
 
         if (currentTroopsSpawned >= maxTurnSpawn) return;
 
-        if (troopType == TroopType.None)
+        TroopBehavior troopBehavior = tile.GetComponentInChildren<TroopBehavior>();
+
+        if (troopType == TroopType.None || (troopBehavior && troopType != troopBehavior.GetTroopType()))
             return;
 
 
         Debug.Log("im in");
 
-        TroopBehavior troopBehavior = tile.GetComponentInChildren<TroopBehavior>();
         if (troopBehavior && troopBehavior.GetTroopType() == troopType)
         {
             if (troopBehavior.TroopInfo.Damage > damageCap) return;

@@ -12,6 +12,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private GridManager grid;
     private List<EnemyBehavior> spawnedEnemies = new();
 
+
     private void Start()
     {
         TroopManager.TroopTurnFinished += ManageEnemyBehavior;
@@ -35,13 +36,20 @@ public class EnemySpawner : MonoBehaviour
 
         foreach (var enemy in enemies)
         {
-            if(enemy == null)
+            int enemyMovement = 0;
+
+            while (enemyMovement < enemy.EnemyInfo.Movement)
             {
-                spawnedEnemies.Remove(enemy);
-                continue;
+                if (enemy == null)
+                {
+                    spawnedEnemies.Remove(enemy);
+                    continue;
+                }
+
+                yield return new WaitForSeconds(0.5f);
+                enemy.MoveEnemy();
+                enemyMovement++;
             }
-            yield return new WaitForSeconds(0.5f);
-            enemy.MoveEnemy();
         }
 
         EnemyTurnFinished?.Invoke();
@@ -66,14 +74,14 @@ public class EnemySpawner : MonoBehaviour
         if (tile.GetComponentInChildren<EnemyBehavior>() != null) return false;
 
         List<BreadthFirstSearch> interestingTings = new();
-        
-        foreach(TroopBehavior troop in TroopManager.troops)
+
+        foreach (TroopBehavior troop in TroopManager.troops)
         {
             interestingTings.Add(troop.GetComponent<BreadthFirstSearch>());
         }
 
         //Adding all the home bases (x is 0) to the interesting list
-        for(int i = 0; i < grid.GetHeight(); i++)
+        for (int i = 0; i < grid.GetHeight(); i++)
         {
             interestingTings.Add(grid.GetTileFromDictionary(new Vector2Int(0, i)).GetComponent<BreadthFirstSearch>());
         }

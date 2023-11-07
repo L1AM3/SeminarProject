@@ -10,9 +10,7 @@ public class HomeBaseDetection : MonoBehaviour
 
         if (theObject.CompareTag("Enemy"))
         {
-            GameManager.Instance.HomeBaseHealth -= theObject.GetComponent<EnemyBehavior>().EnemyInfo.Damage;
-            Debug.Log(GameManager.Instance.HomeBaseHealth);
-            Destroy(theObject);
+
         }
     }
 }

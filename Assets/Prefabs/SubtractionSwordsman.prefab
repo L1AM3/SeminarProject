@@ -353,7 +353,6 @@ GameObject:
   - component: {fileID: 8274132786137122517}
   - component: {fileID: 6580870044773511257}
   - component: {fileID: 4429634582890572603}
-  - component: {fileID: 5495666598453126081}
   - component: {fileID: 8560003733331377958}
   - component: {fileID: -4076680948213420957}
   - component: {fileID: 1315771701122228150}
@@ -449,46 +448,11 @@ MonoBehaviour:
   Grid: {fileID: 0}
   TroopInfo:
     Damage: 2
-    Movement: 3
+    Movement: 17
   TroopGridsCoord: {x: 0, y: 0}
   IsTroopSelected: 0
   troopStackCounter: 0
   currentMoveCount: 0
---- !u!58 &5495666598453126081
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6984985757235128634}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.51
 --- !u!114 &8560003733331377958
 MonoBehaviour:
   m_ObjectHideFlags: 0

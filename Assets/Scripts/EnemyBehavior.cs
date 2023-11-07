@@ -49,6 +49,18 @@ public class EnemyBehavior : MonoBehaviour
         return moveDir;
     }
 
+    public bool IsHomeBase(Tile tile)
+    {
+        return tile.gridCoords.x == 0;
+    }
+
+    public void AtHomeBase()
+    {
+        GameManager.Instance.HomeBaseHealth -= EnemyInfo.Damage;
+        Debug.Log(GameManager.Instance.HomeBaseHealth);
+        Destroy(gameObject);
+    }
+
     public void MoveEnemy()
     {
         if (target == null)
@@ -69,6 +81,8 @@ public class EnemyBehavior : MonoBehaviour
             transform.parent = theFuckingTile.transform;
 
             AttackTarget();
+
+            if (IsHomeBase(theFuckingTile)) { AtHomeBase(); }
         }
     }
 

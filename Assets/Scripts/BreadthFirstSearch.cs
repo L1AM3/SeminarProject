@@ -14,7 +14,6 @@ public class BreadthFirstSearch : MonoBehaviour
         //Make sure BFS can take place, grid needs to exist, is start position in grid, is tile walkable
         if (gridManager == null) return;
         if (gridManager.GetTileFromDictionary(startPos) == null) return;
-        //if (!gridManager.GetTileFromDictionary(startPos).IsWalkable()) return;
 
         Vector2Int currentPos = startPos;
         Queue<Vector2Int> frontier = new Queue<Vector2Int>();

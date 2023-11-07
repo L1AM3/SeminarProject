@@ -20,14 +20,20 @@ public class TroopBehavior : MonoBehaviour
         TroopManager.InvokeTroopSpawned(this);
         GetComponent<BreadthFirstSearch>().BFS(TroopGridsCoord, Grid);
 
-        Placement.GetComponent<EnemySpawner>().EnemyTurnFinished += ChangeTurn;
+        Placement.GetComponent<EnemySpawner>().EnemyTurnFinished += SetCurrentTurnTrue;
+        TroopManager.TroopTurnFinished += SetCurrentTurnFalse;
         Grid.TileSelected += CanMoveTroop;
     }
 
-    private void ChangeTurn()
+    private void SetCurrentTurnTrue()
     {
         currentMoveCount = 0;
         isCurrentTurn = true;
+    }
+
+    private void SetCurrentTurnFalse()
+    {
+        isCurrentTurn = false;
     }
 
     private void Update()
@@ -54,6 +60,37 @@ public class TroopBehavior : MonoBehaviour
         }
     }
 
+    public bool IsEnemyBase(Tile tile)
+    {
+        return tile.gridCoords.x == Grid.GetWidth() - 1;
+    }
+
+    //Yo handeling when dudes get to enemy base
+    public void AtEnemyBase()
+    {
+        if (GetTroopType() == TroopType.AdditionArcher && TroopInfo.Damage >= GameManager.Instance.EnemyBaseHealth)
+        {
+            //Add win yippe
+        }
+        else if (GetTroopType() == TroopType.SubtractionSwordsman)
+        {
+            GameManager.Instance.EnemyBaseHealth -= TroopInfo.Damage;
+
+            if (GameManager.Instance.EnemyBaseHealth < 1)
+            {
+                GameManager.Instance.EnemyBaseHealth = 1;
+            }
+        }
+        else if (GetTroopType() == TroopType.DivisionDogFighter)
+        {
+            GameManager.Instance.EnemyBaseHealth = (int)Mathf.Ceil(GameManager.Instance.EnemyBaseHealth / (float) TroopInfo.Damage);
+        }
+
+        Debug.Log(GameManager.Instance.EnemyBaseHealth);
+        TroopManager.troops.Remove(this);
+        Destroy(gameObject);
+    }
+
     public void TroopMovement(Vector2Int dir)
     {
         if (GameManager.Instance.IsTroopPlacing()) return;
@@ -64,8 +101,8 @@ public class TroopBehavior : MonoBehaviour
         {
             TroopGridsCoord = theFuckingTile.gridCoords;
             transform.position = theFuckingTile.transform.position;
-            //GetComponent<Collider2D>().enabled = false;
-            //GetComponent<Collider2D>().enabled = true;
+
+            if (IsEnemyBase(theFuckingTile)) { AtEnemyBase(); }
 
             theFuckingTile.SetWalkable(false);
             GetComponent<BreadthFirstSearch>().BFS(TroopGridsCoord, Grid);
