@@ -9,4 +9,9 @@ public class Buttons : MonoBehaviour
     {
         SceneManager.LoadScene("MathMenu");
     }
+
+    public void LevelOne()
+    {
+        SceneManager.LoadScene("BattleField");
+    }
 }

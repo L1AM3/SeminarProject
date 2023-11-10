@@ -448,7 +448,7 @@ MonoBehaviour:
   Grid: {fileID: 0}
   TroopInfo:
     Damage: 2
-    Movement: 3
+    Movement: 5
   TroopGridsCoord: {x: 0, y: 0}
   IsTroopSelected: 0
   troopStackCounter: 0
