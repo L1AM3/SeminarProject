@@ -59,13 +59,6 @@ public class GridManager : MonoBehaviour
             }
         }
 
-        for (int y = 0; y < height;y++)
-        {
-            var gridCoord = new Vector2Int(0, y);
-
-            tiles[gridCoord].GetComponent<BreadthFirstSearch>().BFS(gridCoord, this);
-        }
-
         cam.transform.position = new Vector3((float)width / 2 - 0.5f, (float)-height / 2 + 0.5f, 10);
     }
 

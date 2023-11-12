@@ -20,6 +20,13 @@ public class EnemySpawner : MonoBehaviour
 
     private void ManageEnemyBehavior()
     {
+        for (int y = 0; y < grid.GetHeight(); y++)
+        {
+            var gridCoord = new Vector2Int(0, y);
+
+            grid.GetTileFromDictionary(gridCoord).GetComponent<BreadthFirstSearch>().BFS(gridCoord, grid);
+        }
+
         if (UnityEngine.Random.Range(0, spawnedEnemies.Count + 1) == 0)
         {
             StartCoroutine(Co_SpawnEnemyNoTile());
@@ -38,15 +45,22 @@ public class EnemySpawner : MonoBehaviour
         {
             int enemyMovement = 0;
 
-            while (enemyMovement < enemy.EnemyInfo.Movement)
+            if (enemy == null)
             {
+                spawnedEnemies.Remove(enemy);
+                continue;
+            }
+
+            while (enemy != null && enemyMovement < enemy.EnemyInfo.Movement)
+            {
+                yield return new WaitForSeconds(0.5f);
+
                 if (enemy == null)
                 {
                     spawnedEnemies.Remove(enemy);
                     continue;
                 }
 
-                yield return new WaitForSeconds(0.5f);
                 enemy.MoveEnemy();
                 enemyMovement++;
             }
@@ -73,28 +87,24 @@ public class EnemySpawner : MonoBehaviour
     {
         if (tile.GetComponentInChildren<EnemyBehavior>() != null) return false;
 
-        List<BreadthFirstSearch> interestingTings = new();
-
-        foreach (TroopBehavior troop in TroopManager.troops)
-        {
-            interestingTings.Add(troop.GetComponent<BreadthFirstSearch>());
-        }
-
-        //Adding all the home bases (x is 0) to the interesting list
-        for (int i = 0; i < grid.GetHeight(); i++)
-        {
-            interestingTings.Add(grid.GetTileFromDictionary(new Vector2Int(0, i)).GetComponent<BreadthFirstSearch>());
-        }
-
-        if (interestingTings.Count == 0) return false;
-
         EnemyBehavior localEnemy = Instantiate(Enemy, tile.transform.position, Quaternion.identity, tile.transform);
-        localEnemy.SetTarget(interestingTings[UnityEngine.Random.Range(0, interestingTings.Count)]);
         localEnemy.SetGridCoords(tile.gridCoords);
         localEnemy.SetGrid(grid);
+
+        List<BreadthFirstSearch> interestingTings = localEnemy.GetPossibleTargets();
+
+        if (interestingTings.Count == 0)
+        {
+            Destroy(localEnemy.gameObject);
+            return false;
+        }
+
+        localEnemy.SetTarget(interestingTings[UnityEngine.Random.Range(0, interestingTings.Count)]);
 
         spawnedEnemies.Add(localEnemy);
 
         return true;
     }
+
+
 }
