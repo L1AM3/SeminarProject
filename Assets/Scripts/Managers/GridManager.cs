@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -8,6 +9,8 @@ public class GridManager : MonoBehaviour
 {
     public event Action<Tile> TileSelected;
     private bool enemySpawningTile;
+
+    public GridData gridData;
 
     private int[,] gridLayout =
     {
@@ -36,6 +39,7 @@ public class GridManager : MonoBehaviour
 
     private void Start()
     {
+        ReadGridData();
         GenerateGrid();
     }
 
@@ -86,4 +90,16 @@ public class GridManager : MonoBehaviour
     {
         TileSelected?.Invoke(tile);
     }
+
+    public void ReadGridData()
+    {
+        for (int x = 0; x < width; x++)
+        {
+            for (int y = 0; y < height; y++)
+            {
+                gridLayout[y, x] = gridData.gridData[y].xData[x];
+            }
+        }
+    }
+
 }

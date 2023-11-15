@@ -447,7 +447,7 @@ MonoBehaviour:
   Placement: {fileID: 0}
   Grid: {fileID: 0}
   TroopInfo:
-    Damage: 2
+    Damage: -1
     Movement: 5
   TroopGridsCoord: {x: 0, y: 0}
   IsTroopSelected: 0

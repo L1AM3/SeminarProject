@@ -9,15 +9,12 @@ public class EnemyBehavior : MonoBehaviour
     public Vector2Int TroopGridsCoord;
     private BreadthFirstSearch target;
 
-    public void DebuffHealth(int debuffval)
+    public void Start()
     {
-        if (debuffval >= EnemyInfo.Damage)
+        if(Random.Range(0,2) == 1)
         {
-            EnemyInfo.Damage = 1;
-            return;
+            EnemyInfo.Damage *= -1;
         }
-
-        EnemyInfo.Damage -= debuffval;
     }
 
     public void DebuffDivHealth(int debuffval)
@@ -27,9 +24,11 @@ public class EnemyBehavior : MonoBehaviour
         EnemyInfo.Damage = (int)Mathf.Ceil(newHealth);
     }
 
-    public bool KillEnemy(int damage)
+    public bool AlterDamage(int damage)
     {
-        if (damage >= EnemyInfo.Damage)
+        EnemyInfo.Damage += damage;
+
+        if (EnemyInfo.Damage == 0)
         {
             Destroy(gameObject);
             return true;
@@ -81,7 +80,7 @@ public class EnemyBehavior : MonoBehaviour
 
     public void AtHomeBase()
     {
-        GameManager.Instance.HomeBaseHealth -= EnemyInfo.Damage;
+        GameManager.Instance.HomeBaseHealth -= Mathf.Abs(EnemyInfo.Damage);
         Debug.Log(GameManager.Instance.HomeBaseHealth);
         Destroy(gameObject);
     }
@@ -110,9 +109,9 @@ public class EnemyBehavior : MonoBehaviour
             transform.position = theFuckingTile.transform.position;
             transform.parent = theFuckingTile.transform;
 
-            AttackTarget();
-
             if (IsHomeBase(theFuckingTile)) { AtHomeBase(); }
+
+            AttackTarget();
         }
     }
 

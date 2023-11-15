@@ -68,17 +68,13 @@ public class TroopBehavior : MonoBehaviour
     //Yo handeling when dudes get to enemy base
     public void AtEnemyBase()
     {
-        if (GetTroopType() == TroopType.AdditionArcher && TroopInfo.Damage >= GameManager.Instance.EnemyBaseHealth)
+        if (GetTroopType() == TroopType.SubtractionSwordsman || GetTroopType() == TroopType.AdditionArcher)
         {
-            //Add win yippe
-        }
-        else if (GetTroopType() == TroopType.SubtractionSwordsman)
-        {
-            GameManager.Instance.EnemyBaseHealth -= TroopInfo.Damage;
+            GameManager.Instance.EnemyBaseHealth -= Math.Abs(TroopInfo.Damage);
 
-            if (GameManager.Instance.EnemyBaseHealth < 1)
+            if(GameManager.Instance.EnemyBaseHealth < 0)
             {
-                GameManager.Instance.EnemyBaseHealth = 1;
+                //win the game, nerd (kind)
             }
         }
         else if (GetTroopType() == TroopType.DivisionDogFighter)
@@ -97,17 +93,21 @@ public class TroopBehavior : MonoBehaviour
 
         Tile theFuckingTile = Grid.GetTileFromDictionary(TroopGridsCoord + dir);
 
-        if (theFuckingTile != null && TroopAttacking(theFuckingTile) && !TroopOnTile(theFuckingTile))
+        if (theFuckingTile != null && !TroopOnTile(theFuckingTile) && theFuckingTile.IsWalkable())
         {
-            TroopGridsCoord = theFuckingTile.gridCoords;
-            transform.position = theFuckingTile.transform.position;
+            if(TroopAttacking(theFuckingTile))
+            {
+                TroopGridsCoord = theFuckingTile.gridCoords;
+                transform.position = theFuckingTile.transform.position;
 
-            if (IsEnemyBase(theFuckingTile)) { AtEnemyBase(); }
+                if (IsEnemyBase(theFuckingTile)) { AtEnemyBase(); }
 
-            theFuckingTile.SetWalkable(false);
-            GetComponent<BreadthFirstSearch>().BFS(TroopGridsCoord, Grid);
+                theFuckingTile.SetWalkable(false);
+                GetComponent<BreadthFirstSearch>().BFS(TroopGridsCoord, Grid);
 
-            transform.parent = theFuckingTile.transform;
+                transform.parent = theFuckingTile.transform;
+            }
+
             currentMoveCount++;
 
             if (currentMoveCount >= TroopInfo.Movement)
@@ -120,7 +120,12 @@ public class TroopBehavior : MonoBehaviour
     public void TroopStacking()
     {
         troopStackCounter++;
-        TroopInfo.Damage++;
+
+        if(TroopInfo.Damage > 0)
+            TroopInfo.Damage++;
+        else
+            TroopInfo.Damage--;
+
     }
 
     public TroopType GetTroopType() => troopType;
@@ -140,19 +145,11 @@ public class TroopBehavior : MonoBehaviour
             return true;
 
 
-        if (troopType == TroopType.AdditionArcher)
+        if (troopType == TroopType.AdditionArcher || troopType == TroopType.SubtractionSwordsman)
         {
-            if (Enemy.KillEnemy(TroopInfo.Damage))
+            if (Enemy.AlterDamage(TroopInfo.Damage))
                 return true;
 
-            return false;
-        }
-
-        if (troopType == TroopType.SubtractionSwordsman)
-        {
-            Enemy.DebuffHealth(TroopInfo.Damage);
-            TroopManager.RemoveTroop(this);
-            Destroy(gameObject);
             return false;
         }
 
