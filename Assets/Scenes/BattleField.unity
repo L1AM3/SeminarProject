@@ -5086,6 +5086,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EBaseH: {fileID: 174023236}
   HBaseH: {fileID: 1993094940}
+--- !u!114 &1934893387 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4466918368096934373, guid: ecc2a8587c6340f42acee355067821a4, type: 3}
+  m_PrefabInstance: {fileID: 7111928081517628450}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d697c89d1f60ae4e9f96b67f460cda6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1960989759
 GameObject:
   m_ObjectHideFlags: 0
@@ -5587,6 +5598,10 @@ PrefabInstance:
       propertyPath: height
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 1093256697250243240, guid: ecc2a8587c6340f42acee355067821a4, type: 3}
+      propertyPath: gridData
+      value: 
+      objectReference: {fileID: 1934893387}
     - target: {fileID: 1093256697250243240, guid: ecc2a8587c6340f42acee355067821a4, type: 3}
       propertyPath: DefaultTile
       value: 
