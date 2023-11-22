@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class TroopBehavior : MonoBehaviour
 {
@@ -82,8 +83,11 @@ public class TroopBehavior : MonoBehaviour
             GameManager.Instance.EnemyBaseHealth = (int)Mathf.Ceil(GameManager.Instance.EnemyBaseHealth / (float) TroopInfo.Damage);
         }
 
+        Tile parentile = GetComponentInParent<Tile>();
+        parentile.SetWalkable(true);
+
         Debug.Log(GameManager.Instance.EnemyBaseHealth);
-        TroopManager.troops.Remove(this);
+        TroopManager.RemoveTroop(this);
         Destroy(gameObject);
     }
 
@@ -93,19 +97,39 @@ public class TroopBehavior : MonoBehaviour
 
         Tile theFuckingTile = Grid.GetTileFromDictionary(TroopGridsCoord + dir);
 
-        if (theFuckingTile != null && !TroopOnTile(theFuckingTile) && theFuckingTile.IsWalkable())
+        if (theFuckingTile != null)
         {
-            if(TroopAttacking(theFuckingTile))
+            if (troopType == TroopType.MultiplicationMarine)
             {
+                if (TroopOnTile(theFuckingTile))
+                    TroopBuff(theFuckingTile);
+            }
+
+            if (troopType == TroopType.DivisionDogFighter)
+            {
+                if (EnemyOnTile(theFuckingTile))
+                {
+                    EnemyOnTile(theFuckingTile).DebuffDivHealth(TroopInfo.Damage);
+                    GetComponentInParent<Tile>().SetWalkable(true);
+                    TroopManager.RemoveTroop(this);
+                    Destroy(gameObject);
+                }
+            }
+
+            if (!theFuckingTile.IsWalkable() || TroopOnTile(theFuckingTile)) return;
+
+            if (TroopAttacking(theFuckingTile))
+            {
+                GetComponentInParent<Tile>().SetWalkable(true);
                 TroopGridsCoord = theFuckingTile.gridCoords;
                 transform.position = theFuckingTile.transform.position;
 
+                transform.parent = theFuckingTile.transform;
+                theFuckingTile.SetWalkable(false);
+
                 if (IsEnemyBase(theFuckingTile)) { AtEnemyBase(); }
 
-                theFuckingTile.SetWalkable(false);
                 GetComponent<BreadthFirstSearch>().BFS(TroopGridsCoord, Grid);
-
-                transform.parent = theFuckingTile.transform;
             }
 
             currentMoveCount++;
@@ -133,12 +157,6 @@ public class TroopBehavior : MonoBehaviour
 
     public bool TroopAttacking(Tile tile)
     {
-        if (troopType == TroopType.MultiplicationMarine)
-        {
-
-            return !TroopBuff(tile); ;
-        }
-
         var Enemy = tile.GetComponentInChildren<EnemyBehavior>();
 
         if (Enemy == null)
@@ -148,15 +166,11 @@ public class TroopBehavior : MonoBehaviour
         if (troopType == TroopType.AdditionArcher || troopType == TroopType.SubtractionSwordsman)
         {
             if (Enemy.AlterDamage(TroopInfo.Damage))
+            {
                 return true;
+            }
 
-            return false;
-        }
-
-        if (troopType == TroopType.DivisionDogFighter)
-        {
-            Enemy.DebuffDivHealth(TroopInfo.Damage);
-            TroopManager.RemoveTroop(this);
+            GetComponentInParent<Tile>().SetWalkable(true);
             Destroy(gameObject);
             return false;
         }
@@ -173,30 +187,42 @@ public class TroopBehavior : MonoBehaviour
         otherTroop.ScaleDamage(TroopInfo.Damage);
 
         TroopManager.RemoveTroop(this);
+        GetComponentInParent<Tile>().SetWalkable(true);
         Destroy(gameObject);
         return true;
     }
 
     public void TakeDamage(int damage)
     {
-        //Debug.Log(TroopInfo.Health);
-        TroopInfo.Damage -= damage;
-        //Debug.Log(TroopInfo.Health.ToString());
+        bool isNegative = TroopInfo.Damage < 0;
+
+        TroopInfo.Damage = Mathf.Abs(TroopInfo.Damage) - Mathf.Abs(damage);
 
         if (TroopInfo.Damage <= 0)
         {
+            GetComponentInParent<Tile>().SetWalkable(true);
             TroopManager.RemoveTroop(this);
             Destroy(gameObject);
         }
+
+        if (isNegative)
+        {
+            TroopInfo.Damage *= -1;
+        }
     }
 
-    public bool TroopOnTile(Tile tile)
+    public TroopBehavior TroopOnTile(Tile tile)
     {
         TroopBehavior otherTroop = tile.GetComponentInChildren<TroopBehavior>();
 
-        if (otherTroop == null) return false;
+        return otherTroop;
+    }
 
-        return true;
+    public EnemyBehavior EnemyOnTile(Tile tile)
+    {
+        EnemyBehavior enemy = tile.GetComponentInChildren<EnemyBehavior>();
+
+        return enemy;
     }
 
     public void ScaleDamage(int addedDamage) => TroopInfo.Damage *= addedDamage;

@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyBehavior : MonoBehaviour
 {
     public TroopData EnemyInfo;
+    public Vector2Int enemyDamageRange;
     private GridManager Grid;
     public Vector2Int TroopGridsCoord;
     private BreadthFirstSearch target;
@@ -67,10 +68,16 @@ public class EnemyBehavior : MonoBehaviour
             }
         }
 
-        destination = target.GetPathChart()[TroopGridsCoord];
-        moveDir = destination - TroopGridsCoord;
-
-        return moveDir;
+        if(target.GetPathChart().ContainsKey(TroopGridsCoord))
+        {
+            destination = target.GetPathChart()[TroopGridsCoord];
+            moveDir = destination - TroopGridsCoord;
+            return moveDir;
+        }
+        else
+        {
+            return Vector2Int.zero;
+        }
     }
 
     public bool IsHomeBase(Tile tile)
@@ -117,9 +124,15 @@ public class EnemyBehavior : MonoBehaviour
 
     public void AttackTarget()
     {
-        if (target.GetPathChart()[TroopGridsCoord] == new Vector2Int(-1, -1))
+        if (target.GetPathChart().ContainsKey(TroopGridsCoord) && target.GetPathChart()[TroopGridsCoord] == new Vector2Int(-1, -1))
         {
-            target.gameObject.GetComponent<TroopBehavior>().TakeDamage(EnemyInfo.Damage);
+            TroopBehavior troopTarget = target.gameObject.GetComponent<TroopBehavior>();
+
+            if (troopTarget)
+            {
+                troopTarget.TakeDamage(EnemyInfo.Damage);
+            }
+
             Destroy(gameObject);
         }
     }
@@ -139,6 +152,8 @@ public class EnemyBehavior : MonoBehaviour
 
         foreach (TroopBehavior troop in TroopManager.troops)
         {
+            if(troop == null) continue;
+
             interestingTings.Add(troop.GetComponent<BreadthFirstSearch>());
         }
 
@@ -149,5 +164,10 @@ public class EnemyBehavior : MonoBehaviour
         }
 
         return interestingTings;
+    }
+
+    public void SetRandomDamage()
+    {
+        EnemyInfo.Damage = Random.Range(enemyDamageRange.x, enemyDamageRange.y);
     }
 }

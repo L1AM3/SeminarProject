@@ -27,14 +27,7 @@ public class EnemySpawner : MonoBehaviour
             grid.GetTileFromDictionary(gridCoord).GetComponent<BreadthFirstSearch>().BFS(gridCoord, grid);
         }
 
-        if (UnityEngine.Random.Range(0, spawnedEnemies.Count + 1) == 0)
-        {
-            StartCoroutine(Co_SpawnEnemyNoTile());
-        }
-        else
-        {
-            StartCoroutine(Co_MoveAllEnemies());
-        }
+        StartCoroutine(Co_SpawnEnemyNoTile());
     }
 
     private IEnumerator Co_MoveAllEnemies()
@@ -53,7 +46,7 @@ public class EnemySpawner : MonoBehaviour
 
             while (enemy != null && enemyMovement < enemy.EnemyInfo.Movement)
             {
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSeconds(0.15f);
 
                 if (enemy == null)
                 {
@@ -64,6 +57,8 @@ public class EnemySpawner : MonoBehaviour
                 enemy.MoveEnemy();
                 enemyMovement++;
             }
+
+            yield return new WaitForSeconds(0.30f);
         }
 
         EnemyTurnFinished?.Invoke();
@@ -71,16 +66,19 @@ public class EnemySpawner : MonoBehaviour
 
     public IEnumerator Co_SpawnEnemyNoTile()
     {
-        int numEnemies = UnityEngine.Random.Range(1, 4);
+        int numEnemies = UnityEngine.Random.Range(1, 3);
 
         for (int i = 0; i < numEnemies; i++)
         {
-            yield return new WaitForSeconds(0.25f);
+            yield return new WaitForSeconds(0.33f);
             SpawnEnemy(grid.GetTileFromDictionary(new Vector2Int(grid.GetWidth() - 1, UnityEngine.Random.Range(0, grid.GetHeight()))));
         }
 
-        yield return new WaitForSeconds(1f);
-        EnemyTurnFinished?.Invoke();
+        yield return new WaitForSeconds(0.5f);
+
+        StartCoroutine(Co_MoveAllEnemies());
+
+        //EnemyTurnFinished?.Invoke();
     }
 
     bool SpawnEnemy(Tile tile)
@@ -100,7 +98,7 @@ public class EnemySpawner : MonoBehaviour
         }
 
         localEnemy.SetTarget(interestingTings[UnityEngine.Random.Range(0, interestingTings.Count)]);
-
+        localEnemy.SetRandomDamage();
         spawnedEnemies.Add(localEnemy);
 
         return true;
