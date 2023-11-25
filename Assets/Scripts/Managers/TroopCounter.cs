@@ -3,34 +3,51 @@ using System.Collections.Generic;
 using System.Globalization;
 using UnityEngine;
 
-public static class TroopCounter
+public class TroopCounter: MonoBehaviour
 {
-    //5 is test num set it back to 0 idiot
-    public static int AdditionArcher = 20;
-    public static int SubtractionSwordsman = 20;
-    public static int MultiplicationMarine = 20;
-    public static int DivisionDogFighter = 20;
+    public static TroopCounter Instance;
 
-    public static void AddArcher()
+    private void Awake()
+    {
+        //Singleton garbage
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+        //Singleton garbage done
+
+    }
+
+    public int AdditionArcher = 20;
+    public int SubtractionSwordsman = 20;
+    public int MultiplicationMarine = 20;
+    public int DivisionDogFighter = 20;
+
+    public void AddArcher()
     {
         AdditionArcher++;
     }
 
-    public static void AddSwordsman()
+    public void AddSwordsman()
     {
         SubtractionSwordsman++;
     }
 
-    public static void AddMarine()
+    public void AddMarine()
     {
         MultiplicationMarine++;
     }
 
-    public static void AddDogFighter()
+    public void AddDogFighter()
     {
         DivisionDogFighter++;
     }
-    public static void TroopAdder()
+
+   /* public static void TroopAdder()
     {
         if (MathProblemGenerator.symbolIndex == 0)
         {
@@ -52,5 +69,5 @@ public static class TroopCounter
             DivisionDogFighter++;
             Debug.Log("DogFighter: " + DivisionDogFighter);
         }
-    }
+    }*/
 }

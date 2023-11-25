@@ -9,9 +9,14 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     public EnemySpawner Spawn;
     public List<Image> troopButtons = new(4);
-    public int EnemyBaseHealth;
-    public int HomeBaseHealth;
+    [SerializeField] private int EnemyBaseHealth;
+    [SerializeField] private int HomeBaseHealth;
     public int TurnCounter;
+    public event Action<int> HomeBaseDamaged;
+    public event Action<int> EnemyBaseDamaged;
+
+    public int GetHomeBaseHealth() => HomeBaseHealth;
+    public int GetEnemyBaseHealth() => EnemyBaseHealth;
 
     private void Awake()
     {
@@ -33,15 +38,39 @@ public class GameManager : MonoBehaviour
         Spawn.EnemyTurnFinished += AddTroops;
     }
 
+    public void DamageHomebase(int damage)
+    {
+        HomeBaseHealth -= Mathf.Abs(damage);
+
+        HomeBaseDamaged?.Invoke(damage);
+
+        if (HomeBaseHealth < 0)
+        {
+            //lose the game, loser (not kind)
+        }
+    }
+
+    public void DamageEnemybase(int damage)
+    {
+        EnemyBaseHealth -= Math.Abs(damage);
+
+        EnemyBaseDamaged?.Invoke(damage);
+
+        if (EnemyBaseHealth < 0)
+        {
+            //win the game, nerd (kind)
+        }
+    }
+
     private void AddTroops()
     {
-        TroopCounter.AddArcher();
-        TroopCounter.AddSwordsman();
+        TroopCounter.Instance.AddArcher();
+        TroopCounter.Instance.AddSwordsman();
 
         if (TurnCounter % 3 == 0)
         {
-            TroopCounter.AddMarine();
-            TroopCounter.AddDogFighter();
+            TroopCounter.Instance.AddMarine();
+            TroopCounter.Instance.AddDogFighter();
         }
     }
 
@@ -54,9 +83,24 @@ public class GameManager : MonoBehaviour
 
         if(isTroopPlacing)
         {
-            foreach(var button in troopButtons)
+            if (TroopCounter.Instance.AdditionArcher != 0)
             {
-                button.color = Color.white;
+                troopButtons[0].color = Color.white;
+            }
+
+            if (TroopCounter.Instance.SubtractionSwordsman != 0)
+            {
+                troopButtons[1].color = Color.white;
+            }
+
+            if (TroopCounter.Instance.MultiplicationMarine != 0)
+            {
+                troopButtons[2].color = Color.white;
+            }
+
+            if (TroopCounter.Instance.DivisionDogFighter != 0)
+            {
+                troopButtons[3].color = Color.white;
             }
         }
         else

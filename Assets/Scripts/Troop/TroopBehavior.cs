@@ -16,11 +16,14 @@ public class TroopBehavior : MonoBehaviour
     [HideInInspector] public int currentMoveCount = 0;
     private bool isCurrentTurn = true;
     [SerializeField] private int debuffRadius = 0;
+    [SerializeField] private Sprite hightlightSprite;
+    private Sprite normalSprite;
 
     private void Start()
     {
         TroopManager.InvokeTroopSpawned(this);
         GetComponent<BreadthFirstSearch>().BFS(TroopGridsCoord, Grid);
+        normalSprite = GetComponent<SpriteRenderer>().sprite;
 
         Placement.GetComponent<EnemySpawner>().EnemyTurnFinished += SetCurrentTurnTrue;
         TroopManager.TroopTurnFinished += SetCurrentTurnFalse;
@@ -71,8 +74,16 @@ public class TroopBehavior : MonoBehaviour
         return tile.gridCoords.x == Grid.GetWidth() - 1;
     }
 
+    public void DeselectTroop()
+    {
+        GetComponent<SpriteRenderer>().sprite = normalSprite;
+        IsTroopSelected = false;
+    }
+
     public void SetTroopSelected()
     {
+        GetComponent<SpriteRenderer>().sprite = hightlightSprite;
+
         IsTroopSelected = true;
 
         if (troopType == TroopType.DivisionDogFighter)
@@ -98,22 +109,12 @@ public class TroopBehavior : MonoBehaviour
     {
         if (GetTroopType() == TroopType.SubtractionSwordsman || GetTroopType() == TroopType.AdditionArcher)
         {
-            GameManager.Instance.EnemyBaseHealth -= Math.Abs(TroopInfo.Damage);
-
-            if(GameManager.Instance.EnemyBaseHealth < 0)
-            {
-                //win the game, nerd (kind)
-            }
-        }
-        else if (GetTroopType() == TroopType.DivisionDogFighter)
-        {
-            GameManager.Instance.EnemyBaseHealth = (int)Mathf.Ceil(GameManager.Instance.EnemyBaseHealth / (float) TroopInfo.Damage);
+            GameManager.Instance.DamageEnemybase(TroopInfo.Damage);
         }
 
         Tile parentile = GetComponentInParent<Tile>();
         parentile.SetWalkable(true);
 
-        Debug.Log(GameManager.Instance.EnemyBaseHealth);
         TroopManager.RemoveTroop(this);
         Destroy(gameObject);
     }
@@ -256,6 +257,9 @@ public class TroopBehavior : MonoBehaviour
 
         TroopInfo.Damage = Mathf.Abs(TroopInfo.Damage) - Mathf.Abs(damage);
 
+        GetComponent<SpriteRenderer>().color = Color.red;
+        StartCoroutine(ResetColor());
+
         if (TroopInfo.Damage <= 0)
         {
             GetComponentInParent<Tile>().SetWalkable(true);
@@ -267,6 +271,13 @@ public class TroopBehavior : MonoBehaviour
         {
             TroopInfo.Damage *= -1;
         }
+    }
+
+    private IEnumerator ResetColor()
+    {
+        yield return new WaitForSeconds(0.3f);
+
+        GetComponent<SpriteRenderer>().color = Color.white;
     }
 
     public TroopBehavior TroopOnTile(Tile tile)

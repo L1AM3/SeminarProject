@@ -38,10 +38,8 @@ public static class TroopManager
     {
         foreach(var t in troops)
         {
-            t.IsTroopSelected = false;
+            t.DeselectTroop();
         }
-
-        troop.IsTroopSelected = true;
 
         DeactivateDamageHighlight();
 

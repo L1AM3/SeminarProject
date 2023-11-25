@@ -1,4 +1,4 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -31,7 +31,7 @@ public class MathProblemAnswer : MonoBehaviour
 
         if (playerInput.Contains(answer))
         {
-            TroopCounter.TroopAdder();
+            //TroopCounter.TroopAdder();
             MathProblemGenerator.GenerateMathProblem();
             UI.ClearInput();
             
@@ -43,3 +43,4 @@ public class MathProblemAnswer : MonoBehaviour
     }
 
 }
+*/

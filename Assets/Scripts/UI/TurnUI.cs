@@ -7,6 +7,7 @@ using System;
 public class TurnUI : MonoBehaviour
 {
     public TMP_Text TurnText;
+    public TMP_Text TurnCounterText;
     public EnemySpawner Spawn;
 
     // Start is called before the first frame update
@@ -18,6 +19,11 @@ public class TurnUI : MonoBehaviour
         Spawn.EnemyTurnFinished += PlayerTurnText;
     }
 
+    private void Update()
+    {
+        TurnCounter();
+    }
+
     private void PlayerTurnText()
     {
         TurnText.text = "Your Turn";
@@ -26,5 +32,10 @@ public class TurnUI : MonoBehaviour
     private void EnemyTurnText()
     {
         TurnText.text = "Enemy Turn";
+    }
+
+    private void TurnCounter()
+    {
+        TurnCounterText.text = GameManager.Instance.TurnCounter.ToString();
     }
 }

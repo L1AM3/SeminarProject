@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 25587345918118996}
   - component: {fileID: 3791185189237740903}
   - component: {fileID: 3035551326156578878}
+  - component: {fileID: 4553596854879074369}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -81,6 +82,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84889a6f45da53a458ac483dadc4c9ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Spawn: {fileID: 0}
+  troopButtons: []
   EnemyBaseHealth: 0
   HomeBaseHealth: 0
+  TurnCounter: 0
   isTroopPlacing: 1
+--- !u!114 &4553596854879074369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 347948641232801456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02a69250ff7ae454a9a3343691f6b6ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AdditionArcher: 5
+  SubtractionSwordsman: 5
+  MultiplicationMarine: 1
+  DivisionDogFighter: 1

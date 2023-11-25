@@ -29,6 +29,9 @@ public class EnemyBehavior : MonoBehaviour
     {
         EnemyInfo.Damage += damage;
 
+        GetComponent<SpriteRenderer>().color = Color.red;
+        StartCoroutine(ResetColor());
+
         if (EnemyInfo.Damage == 0)
         {
             Destroy(gameObject);
@@ -36,6 +39,13 @@ public class EnemyBehavior : MonoBehaviour
         }
 
         return false;
+    }
+
+    private IEnumerator ResetColor()
+    {
+        yield return new WaitForSeconds(0.3f);
+
+        GetComponent<SpriteRenderer>().color = Color.white;
     }
 
     public void SetTarget(BreadthFirstSearch target) => this.target = target;
@@ -87,8 +97,7 @@ public class EnemyBehavior : MonoBehaviour
 
     public void AtHomeBase()
     {
-        GameManager.Instance.HomeBaseHealth -= Mathf.Abs(EnemyInfo.Damage);
-        Debug.Log(GameManager.Instance.HomeBaseHealth);
+        GameManager.Instance.DamageHomebase(EnemyInfo.Damage);
         Destroy(gameObject);
     }
 

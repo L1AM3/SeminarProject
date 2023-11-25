@@ -79,33 +79,59 @@ public class TroopPlacement : MonoBehaviour
         switch (type)
         {
             case TroopType.DivisionDogFighter:
-                if (TroopCounter.DivisionDogFighter >= 1)
+                if (TroopCounter.Instance.DivisionDogFighter >= 1)
                 {
-                    TroopCounter.DivisionDogFighter -= 1;
+                    TroopCounter.Instance.DivisionDogFighter -= 1;
+
+                    if (TroopCounter.Instance.DivisionDogFighter <= 0)
+                    {
+                        GameManager.Instance.troopButtons[3].color = Color.gray;
+                    }
+
                     return true;
                 }
                 break;
 
             case TroopType.MultiplicationMarine:
-                if (TroopCounter.MultiplicationMarine >= 1)
+                if (TroopCounter.Instance.MultiplicationMarine >= 1)
                 {
-                    TroopCounter.MultiplicationMarine -= 1;
+                    TroopCounter.Instance.MultiplicationMarine -= 1;
+
+                    if (TroopCounter.Instance.MultiplicationMarine <= 0)
+                    {
+                        GameManager.Instance.troopButtons[2].color = Color.gray;
+                    }
+
                     return true;
                 }
                 break;
 
             case TroopType.SubtractionSwordsman:
-                if (TroopCounter.SubtractionSwordsman >= 1)
+                if (TroopCounter.Instance.SubtractionSwordsman >= 1)
                 {
-                    TroopCounter.SubtractionSwordsman -= 1;
+                    TroopCounter.Instance.SubtractionSwordsman -= 1;
+
+
+                    if (TroopCounter.Instance.SubtractionSwordsman <= 0)
+                    {
+                        GameManager.Instance.troopButtons[1].color = Color.gray;
+                    }
+
                     return true;
                 }
                 break;
 
             case TroopType.AdditionArcher:
-                if (TroopCounter.AdditionArcher >= 1)
+                if (TroopCounter.Instance.AdditionArcher >= 1)
                 {
-                    TroopCounter.AdditionArcher -= 1;
+                    TroopCounter.Instance.AdditionArcher -= 1;
+
+
+                    if (TroopCounter.Instance.AdditionArcher <= 0)
+                    {
+                        GameManager.Instance.troopButtons[0].color = Color.gray;
+                    }
+
                     return true;
                 }
                 break;
