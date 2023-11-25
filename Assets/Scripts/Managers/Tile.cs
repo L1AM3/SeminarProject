@@ -7,6 +7,7 @@ public class Tile : MonoBehaviour
     [SerializeField] private Color baseColor, offsetColor;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private GameObject highlight;
+    [SerializeField] private GameObject damagehighlight;
     [SerializeField] private bool isWalkable = true;
 
     private GridManager _gridManager;
@@ -18,6 +19,7 @@ public class Tile : MonoBehaviour
     public Vector2Int GetGridCords() => gridCoords;
     public bool IsWalkable() => isWalkable;
     public void SetWalkable(bool walkable) => isWalkable = walkable;
+    public GameObject GetDamageHighlight() => damagehighlight;
 
     public void Init(bool isOffset)
     {

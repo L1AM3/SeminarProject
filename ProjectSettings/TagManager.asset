@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Troop
   - Enemy
+  - DebuffRadius
   layers:
   - Default
   - TransparentFX

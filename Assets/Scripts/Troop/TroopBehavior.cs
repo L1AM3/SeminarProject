@@ -15,6 +15,7 @@ public class TroopBehavior : MonoBehaviour
     private TroopType troopType = TroopType.None;
     [HideInInspector] public int currentMoveCount = 0;
     private bool isCurrentTurn = true;
+    [SerializeField] private int debuffRadius = 0;
 
     private void Start()
     {
@@ -51,6 +52,10 @@ public class TroopBehavior : MonoBehaviour
         {
             TroopMovement(new Vector2Int(0, 1));
         }
+        else if (Input.GetKeyDown(KeyCode.LeftArrow) && IsTroopSelected && isCurrentTurn)
+        {
+            TroopMovement(new Vector2Int(-1, 0));
+        }
     }
 
     public void CanMoveTroop(Tile tile)
@@ -64,6 +69,28 @@ public class TroopBehavior : MonoBehaviour
     public bool IsEnemyBase(Tile tile)
     {
         return tile.gridCoords.x == Grid.GetWidth() - 1;
+    }
+
+    public void SetTroopSelected()
+    {
+        IsTroopSelected = true;
+
+        if (troopType == TroopType.DivisionDogFighter)
+        {
+            for (int x = -debuffRadius; x <= debuffRadius; x++)
+            {
+                for (int y = -debuffRadius; y <= debuffRadius; y++)
+                {
+                    if (Mathf.Abs(x) + Mathf.Abs(y) <= debuffRadius)
+                    {
+                        Tile tile = Grid.GetTileFromDictionary(TroopGridsCoord + new Vector2Int(x, y));
+
+                        if (tile != null)
+                            tile.GetDamageHighlight().SetActive(true);
+                    }
+                }
+            }
+        }
     }
 
     //Yo handeling when dudes get to enemy base
@@ -108,12 +135,7 @@ public class TroopBehavior : MonoBehaviour
             if (troopType == TroopType.DivisionDogFighter)
             {
                 if (EnemyOnTile(theFuckingTile))
-                {
-                    EnemyOnTile(theFuckingTile).DebuffDivHealth(TroopInfo.Damage);
-                    GetComponentInParent<Tile>().SetWalkable(true);
-                    TroopManager.RemoveTroop(this);
-                    Destroy(gameObject);
-                }
+                DebuffRadius(theFuckingTile);
             }
 
             if (!theFuckingTile.IsWalkable() || TroopOnTile(theFuckingTile)) return;
@@ -130,6 +152,9 @@ public class TroopBehavior : MonoBehaviour
                 if (IsEnemyBase(theFuckingTile)) { AtEnemyBase(); }
 
                 GetComponent<BreadthFirstSearch>().BFS(TroopGridsCoord, Grid);
+
+                TroopManager.DeactivateDamageHighlight();
+                SetTroopSelected();
             }
 
             currentMoveCount++;
@@ -139,6 +164,32 @@ public class TroopBehavior : MonoBehaviour
                 isCurrentTurn = false;
             }
         }
+    }
+
+    public void DebuffRadius(Tile originTile)
+    {
+        for (int x = -debuffRadius; x <= debuffRadius; x++)
+        {
+            for (int y = -debuffRadius; y <= debuffRadius; y++)
+            {
+                EnemyBehavior enemyBehavior = EnemyOnTile(Grid.GetTileFromDictionary(originTile.gridCoords + new Vector2Int(x, y)));
+                TroopBehavior troopBehavior = TroopOnTile(Grid.GetTileFromDictionary(originTile.gridCoords + new Vector2Int(x, y)));
+
+                if (Mathf.Abs(x) + Mathf.Abs(y) <= debuffRadius)
+                {
+                    if(enemyBehavior)
+                        enemyBehavior.DebuffDivHealth(TroopInfo.Damage);
+                    
+                    if(troopBehavior)
+                        troopBehavior.DebuffDivHealth(TroopInfo.Damage);
+                }
+            }
+        }
+
+        GetComponentInParent<Tile>().SetWalkable(true);
+        TroopManager.RemoveTroop(this);
+        TroopManager.DeactivateDamageHighlight();
+        Destroy(gameObject);
     }
 
     public void TroopStacking()
@@ -192,6 +243,13 @@ public class TroopBehavior : MonoBehaviour
         return true;
     }
 
+    public void DebuffDivHealth(int debuffval)
+    {
+        Debug.Assert(debuffval > 0);
+        float newHealth = (float)TroopInfo.Damage / debuffval;
+        TroopInfo.Damage = (int)Mathf.Ceil(newHealth);
+    }
+
     public void TakeDamage(int damage)
     {
         bool isNegative = TroopInfo.Damage < 0;
@@ -213,6 +271,8 @@ public class TroopBehavior : MonoBehaviour
 
     public TroopBehavior TroopOnTile(Tile tile)
     {
+        if (tile == null) return null;
+
         TroopBehavior otherTroop = tile.GetComponentInChildren<TroopBehavior>();
 
         return otherTroop;
@@ -220,6 +280,8 @@ public class TroopBehavior : MonoBehaviour
 
     public EnemyBehavior EnemyOnTile(Tile tile)
     {
+        if(tile == null) return null;
+
         EnemyBehavior enemy = tile.GetComponentInChildren<EnemyBehavior>();
 
         return enemy;

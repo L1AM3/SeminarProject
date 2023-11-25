@@ -5532,6 +5532,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3035551326156578878, guid: 6bb2a79c821bf734ebc1a1ba6b7be020, type: 3}
+      propertyPath: Spawn
+      value: 
+      objectReference: {fileID: 1252212275243530870}
+    - target: {fileID: 3035551326156578878, guid: 6bb2a79c821bf734ebc1a1ba6b7be020, type: 3}
       propertyPath: HomeBaseHealth
       value: 100
       objectReference: {fileID: 0}
@@ -5539,6 +5543,26 @@ PrefabInstance:
       propertyPath: EnemyBaseHealth
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 3035551326156578878, guid: 6bb2a79c821bf734ebc1a1ba6b7be020, type: 3}
+      propertyPath: troopButtons.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3035551326156578878, guid: 6bb2a79c821bf734ebc1a1ba6b7be020, type: 3}
+      propertyPath: troopButtons.Array.data[0]
+      value: 
+      objectReference: {fileID: 1198217356}
+    - target: {fileID: 3035551326156578878, guid: 6bb2a79c821bf734ebc1a1ba6b7be020, type: 3}
+      propertyPath: troopButtons.Array.data[1]
+      value: 
+      objectReference: {fileID: 1358382544}
+    - target: {fileID: 3035551326156578878, guid: 6bb2a79c821bf734ebc1a1ba6b7be020, type: 3}
+      propertyPath: troopButtons.Array.data[2]
+      value: 
+      objectReference: {fileID: 144004075}
+    - target: {fileID: 3035551326156578878, guid: 6bb2a79c821bf734ebc1a1ba6b7be020, type: 3}
+      propertyPath: troopButtons.Array.data[3]
+      value: 
+      objectReference: {fileID: 352202641}
     - target: {fileID: 3791185189237740903, guid: 6bb2a79c821bf734ebc1a1ba6b7be020, type: 3}
       propertyPath: grid
       value: 

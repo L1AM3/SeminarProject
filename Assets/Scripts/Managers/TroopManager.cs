@@ -31,6 +31,7 @@ public static class TroopManager
     public static void InvokeTroopTurnFinished()
     {
         TroopTurnFinished?.Invoke();
+        GameManager.Instance.TurnCounter++;
     }
 
     public static void SetSelectedTroop(TroopBehavior troop)
@@ -41,5 +42,16 @@ public static class TroopManager
         }
 
         troop.IsTroopSelected = true;
+
+        DeactivateDamageHighlight();
+
+        troop.SetTroopSelected();
+    }
+
+    public static void DeactivateDamageHighlight()
+    {
+        var DebuffHighlights = GameObject.FindGameObjectsWithTag("DebuffRadius");
+
+        foreach (var debuffHighlight in DebuffHighlights) { debuffHighlight.SetActive(false); }
     }
 }

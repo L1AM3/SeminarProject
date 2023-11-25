@@ -11,6 +11,25 @@ public static class TroopCounter
     public static int MultiplicationMarine = 20;
     public static int DivisionDogFighter = 20;
 
+    public static void AddArcher()
+    {
+        AdditionArcher++;
+    }
+
+    public static void AddSwordsman()
+    {
+        SubtractionSwordsman++;
+    }
+
+    public static void AddMarine()
+    {
+        MultiplicationMarine++;
+    }
+
+    public static void AddDogFighter()
+    {
+        DivisionDogFighter++;
+    }
     public static void TroopAdder()
     {
         if (MathProblemGenerator.symbolIndex == 0)
