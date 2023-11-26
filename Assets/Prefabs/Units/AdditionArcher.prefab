@@ -283,7 +283,7 @@ MonoBehaviour:
   troopStackCounter: 0
   currentMoveCount: 0
   debuffRadius: 0
-  hightlightSprite: {fileID: 21300000, guid: a58dd2655c7666243b98c691955412b3, type: 3}
+  hightlightSprite: {fileID: 21300000, guid: 022dc45806d9d374bb1eb21b675d6570, type: 3}
 --- !u!114 &-1201272999545983840
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -44,9 +45,9 @@ public class GameManager : MonoBehaviour
 
         HomeBaseDamaged?.Invoke(damage);
 
-        if (HomeBaseHealth < 0)
+        if (HomeBaseHealth <= 0)
         {
-            //lose the game, loser (not kind)
+            SceneManager.LoadScene("LoseScene");
         }
     }
 
@@ -56,9 +57,9 @@ public class GameManager : MonoBehaviour
 
         EnemyBaseDamaged?.Invoke(damage);
 
-        if (EnemyBaseHealth < 0)
+        if (EnemyBaseHealth <= 0)
         {
-            //win the game, nerd (kind)
+            SceneManager.LoadScene("WinScreen");
         }
     }
 
