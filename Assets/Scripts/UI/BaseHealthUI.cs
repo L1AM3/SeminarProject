@@ -14,6 +14,9 @@ public class BaseHealthUI : MonoBehaviour
 
     private void Start()
     {
+        EBaseH.text = GameManager.Instance.GetEnemyBaseHealth().ToString();
+        HBaseH.text = GameManager.Instance.GetHomeBaseHealth().ToString();
+
         GameManager.Instance.HomeBaseDamaged += HomeDamageFeedback;
         GameManager.Instance.EnemyBaseDamaged += EnemyDamageFeedback;
 

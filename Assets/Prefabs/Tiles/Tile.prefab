@@ -99,10 +99,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78ee26c17a0acfb4cb0a62a93f75c32f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseColor: {r: 1, g: 0.7929859, b: 0, a: 1}
-  offsetColor: {r: 0.5568628, g: 0.3829083, b: 0, a: 1}
+  baseColor: {r: 1, g: 1, b: 1, a: 1}
+  offsetColor: {r: 1, g: 1, b: 1, a: 1}
   spriteRenderer: {fileID: 5847083018290227936}
   highlight: {fileID: 3840123921575693932}
+  damagehighlight: {fileID: 0}
   isWalkable: 1
   gridCoords: {x: 0, y: 0}
 --- !u!61 &-7690823285496953065

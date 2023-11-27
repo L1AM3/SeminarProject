@@ -77,8 +77,8 @@ SpriteRenderer:
   m_SortingLayerID: -803042683
   m_SortingLayer: -2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.36794567, g: 0, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: c3f48bc2215aa7d40a78b68149489bdb, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -145,8 +145,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78ee26c17a0acfb4cb0a62a93f75c32f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseColor: {r: 0.28613663, g: 0, b: 1, a: 1}
-  offsetColor: {r: 0.472787, g: 0.07075471, b: 1, a: 1}
+  baseColor: {r: 1, g: 1, b: 1, a: 1}
+  offsetColor: {r: 1, g: 1, b: 1, a: 1}
   spriteRenderer: {fileID: 7018629201081946621}
   highlight: {fileID: 8287176155997857335}
   damagehighlight: {fileID: 1605029871018144354}
