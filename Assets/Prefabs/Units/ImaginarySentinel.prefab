@@ -101,7 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyInfo:
     Damage: 3
-    Movement: 5
+    Movement: 3
   enemyDamageRange: {x: 1, y: 5}
   TroopGridsCoord: {x: 0, y: 0}
 --- !u!114 &8030273990966419731

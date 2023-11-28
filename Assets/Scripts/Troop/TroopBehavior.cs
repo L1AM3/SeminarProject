@@ -223,6 +223,7 @@ public class TroopBehavior : MonoBehaviour
             }
 
             GetComponentInParent<Tile>().SetWalkable(true);
+            TroopManager.troops.Remove(this);
             Destroy(gameObject);
             return false;
         }

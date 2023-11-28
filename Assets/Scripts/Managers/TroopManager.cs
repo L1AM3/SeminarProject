@@ -36,7 +36,9 @@ public static class TroopManager
 
     public static void SetSelectedTroop(TroopBehavior troop)
     {
-        foreach(var t in troops)
+        if (troop == null) return;
+
+        foreach (var t in troops)
         {
             t.DeselectTroop();
         }
