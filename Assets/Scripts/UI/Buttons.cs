@@ -12,7 +12,7 @@ public class Buttons : MonoBehaviour
 
     public void LevelSelect()
     {
-        SceneManager.LoadScene("LevelSelect");
+        SceneManager.LoadScene("LevelSelection");
     }
 
     public void Quit()
