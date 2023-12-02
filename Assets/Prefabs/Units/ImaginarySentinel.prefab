@@ -102,7 +102,7 @@ MonoBehaviour:
   EnemyInfo:
     Damage: 3
     Movement: 3
-  enemyDamageRange: {x: 1, y: 5}
+  enemyDamageRange: {x: 1, y: 10}
   TroopGridsCoord: {x: 0, y: 0}
 --- !u!114 &8030273990966419731
 MonoBehaviour:

@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
 
         if (HomeBaseHealth <= 0)
         {
-            SceneManager.LoadScene("LoseScene");
+            SceneManager.LoadScene("LoseScreen");
         }
     }
 

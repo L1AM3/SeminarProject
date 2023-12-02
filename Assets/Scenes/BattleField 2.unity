@@ -3464,11 +3464,11 @@ PrefabInstance:
       objectReference: {fileID: 1252212275243530870}
     - target: {fileID: 3035551326156578878, guid: 6bb2a79c821bf734ebc1a1ba6b7be020, type: 3}
       propertyPath: HomeBaseHealth
-      value: 25
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 3035551326156578878, guid: 6bb2a79c821bf734ebc1a1ba6b7be020, type: 3}
       propertyPath: EnemyBaseHealth
-      value: 25
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 3035551326156578878, guid: 6bb2a79c821bf734ebc1a1ba6b7be020, type: 3}
       propertyPath: troopButtons.Array.size
@@ -3504,19 +3504,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4553596854879074369, guid: 6bb2a79c821bf734ebc1a1ba6b7be020, type: 3}
       propertyPath: AdditionArcher
-      value: 15
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4553596854879074369, guid: 6bb2a79c821bf734ebc1a1ba6b7be020, type: 3}
       propertyPath: DivisionDogFighter
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4553596854879074369, guid: 6bb2a79c821bf734ebc1a1ba6b7be020, type: 3}
       propertyPath: MultiplicationMarine
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4553596854879074369, guid: 6bb2a79c821bf734ebc1a1ba6b7be020, type: 3}
       propertyPath: SubtractionSwordsman
-      value: 15
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3650,11 +3650,35 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4466918368096934373, guid: ecc2a8587c6340f42acee355067821a4, type: 3}
+      propertyPath: gridData.Array.data[0].xData.Array.data[5]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4466918368096934373, guid: ecc2a8587c6340f42acee355067821a4, type: 3}
       propertyPath: gridData.Array.data[1].xData.Array.data[1]
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4466918368096934373, guid: ecc2a8587c6340f42acee355067821a4, type: 3}
       propertyPath: gridData.Array.data[1].xData.Array.data[2]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4466918368096934373, guid: ecc2a8587c6340f42acee355067821a4, type: 3}
+      propertyPath: gridData.Array.data[1].xData.Array.data[5]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4466918368096934373, guid: ecc2a8587c6340f42acee355067821a4, type: 3}
+      propertyPath: gridData.Array.data[2].xData.Array.data[5]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4466918368096934373, guid: ecc2a8587c6340f42acee355067821a4, type: 3}
+      propertyPath: gridData.Array.data[2].xData.Array.data[8]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4466918368096934373, guid: ecc2a8587c6340f42acee355067821a4, type: 3}
+      propertyPath: gridData.Array.data[3].xData.Array.data[5]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4466918368096934373, guid: ecc2a8587c6340f42acee355067821a4, type: 3}
+      propertyPath: gridData.Array.data[3].xData.Array.data[8]
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4466918368096934373, guid: ecc2a8587c6340f42acee355067821a4, type: 3}
@@ -3664,6 +3688,14 @@ PrefabInstance:
     - target: {fileID: 4466918368096934373, guid: ecc2a8587c6340f42acee355067821a4, type: 3}
       propertyPath: gridData.Array.data[4].xData.Array.data[2]
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4466918368096934373, guid: ecc2a8587c6340f42acee355067821a4, type: 3}
+      propertyPath: gridData.Array.data[4].xData.Array.data[5]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4466918368096934373, guid: ecc2a8587c6340f42acee355067821a4, type: 3}
+      propertyPath: gridData.Array.data[4].xData.Array.data[8]
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4466918368096934373, guid: ecc2a8587c6340f42acee355067821a4, type: 3}
       propertyPath: gridData.Array.data[5].xData.Array.data[1]
@@ -3690,8 +3722,20 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4466918368096934373, guid: ecc2a8587c6340f42acee355067821a4, type: 3}
+      propertyPath: gridData.Array.data[2].xData.Array.data[11]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4466918368096934373, guid: ecc2a8587c6340f42acee355067821a4, type: 3}
       propertyPath: gridData.Array.data[2].xData.Array.data[15]
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4466918368096934373, guid: ecc2a8587c6340f42acee355067821a4, type: 3}
+      propertyPath: gridData.Array.data[3].xData.Array.data[11]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4466918368096934373, guid: ecc2a8587c6340f42acee355067821a4, type: 3}
+      propertyPath: gridData.Array.data[4].xData.Array.data[11]
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4466918368096934373, guid: ecc2a8587c6340f42acee355067821a4, type: 3}
       propertyPath: gridData.Array.data[4].xData.Array.data[14]
@@ -3700,6 +3744,10 @@ PrefabInstance:
     - target: {fileID: 4466918368096934373, guid: ecc2a8587c6340f42acee355067821a4, type: 3}
       propertyPath: gridData.Array.data[4].xData.Array.data[15]
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4466918368096934373, guid: ecc2a8587c6340f42acee355067821a4, type: 3}
+      propertyPath: gridData.Array.data[5].xData.Array.data[11]
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4466918368096934373, guid: ecc2a8587c6340f42acee355067821a4, type: 3}
       propertyPath: gridData.Array.data[5].xData.Array.data[14]

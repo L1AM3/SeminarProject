@@ -15,6 +15,12 @@ EditorBuildSettings:
     path: Assets/Scenes/BattleField.unity
     guid: 0640f020ffa1e5f42964390ffc748103
   - enabled: 1
+    path: Assets/Scenes/BattleField 2.unity
+    guid: cb9e82dce45230643b17f5da608bc392
+  - enabled: 1
+    path: Assets/Scenes/BattleField 3.unity
+    guid: 64760f7472790a145b19847f16df34fe
+  - enabled: 1
     path: Assets/Scenes/LoseScreen.unity
     guid: 98444993775295c45a2653bba67916bc
   - enabled: 1
