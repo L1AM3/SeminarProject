@@ -7,8 +7,8 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     public EnemyBehavior Enemy;
-    public float SpawnDelay;
     public event Action EnemyTurnFinished;
+    [SerializeField] private Vector2Int enemySpawnRange;
     [SerializeField] private GridManager grid;
     private List<EnemyBehavior> spawnedEnemies = new();
 
@@ -16,15 +16,28 @@ public class EnemySpawner : MonoBehaviour
     private void Start()
     {
         TroopManager.TroopTurnFinished += ManageEnemyBehavior;
+
+    }
+
+    private void OnDisable()
+    {
+        TroopManager.TroopTurnFinished -= ManageEnemyBehavior;
     }
 
     private void ManageEnemyBehavior()
     {
+        //grid = FindObjectOfType<GridManager>();
+
         for (int y = 0; y < grid.GetHeight(); y++)
         {
             var gridCoord = new Vector2Int(0, y);
 
-            grid.GetTileFromDictionary(gridCoord).GetComponent<BreadthFirstSearch>().BFS(gridCoord, grid);
+            Tile tile = grid.GetTileFromDictionary(gridCoord);
+
+            if (tile)
+            {
+                tile.GetComponent<BreadthFirstSearch>().BFS(gridCoord, grid);
+            }
         }
 
         StartCoroutine(Co_SpawnEnemyNoTile());
@@ -66,7 +79,7 @@ public class EnemySpawner : MonoBehaviour
 
     public IEnumerator Co_SpawnEnemyNoTile()
     {
-        int numEnemies = UnityEngine.Random.Range(1, 3);
+        int numEnemies = UnityEngine.Random.Range(enemySpawnRange.x, enemySpawnRange.y);
 
         for (int i = 0; i < numEnemies; i++)
         {

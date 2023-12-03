@@ -97,7 +97,14 @@ public class TroopBehavior : MonoBehaviour
                         Tile tile = Grid.GetTileFromDictionary(TroopGridsCoord + new Vector2Int(x, y));
 
                         if (tile != null)
-                            tile.GetDamageHighlight().SetActive(true);
+                        {
+                            GameObject damageHighlight = tile.GetDamageHighlight();
+
+                            if (damageHighlight)
+                            {
+                                damageHighlight.SetActive(true);
+                            }
+                        }
                     }
                 }
             }
@@ -174,15 +181,12 @@ public class TroopBehavior : MonoBehaviour
             for (int y = -debuffRadius; y <= debuffRadius; y++)
             {
                 EnemyBehavior enemyBehavior = EnemyOnTile(Grid.GetTileFromDictionary(originTile.gridCoords + new Vector2Int(x, y)));
-                TroopBehavior troopBehavior = TroopOnTile(Grid.GetTileFromDictionary(originTile.gridCoords + new Vector2Int(x, y)));
+                //TroopBehavior troopBehavior = TroopOnTile(Grid.GetTileFromDictionary(originTile.gridCoords + new Vector2Int(x, y)));
 
                 if (Mathf.Abs(x) + Mathf.Abs(y) <= debuffRadius)
                 {
                     if(enemyBehavior)
                         enemyBehavior.DebuffDivHealth(TroopInfo.Damage);
-                    
-                    if(troopBehavior)
-                        troopBehavior.DebuffDivHealth(TroopInfo.Damage);
                 }
             }
         }

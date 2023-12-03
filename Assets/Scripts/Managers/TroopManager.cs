@@ -38,9 +38,18 @@ public static class TroopManager
     {
         if (troop == null) return;
 
-        foreach (var t in troops)
+        var tempList = new List<TroopBehavior>(troops);
+
+        foreach (var t in tempList)
         {
-            t.DeselectTroop();
+            if (t)
+            {
+                t.DeselectTroop();
+            }
+            else
+            {
+                troops.Remove(t);
+            }
         }
 
         DeactivateDamageHighlight();

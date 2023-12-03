@@ -37,7 +37,7 @@ public class GridManager : MonoBehaviour
     public int GetWidth() => width;
     public int GetHeight() => height;
 
-    private void Start()
+    private void Awake()
     {
         ReadGridData();
         GenerateGrid();

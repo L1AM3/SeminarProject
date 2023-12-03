@@ -74,6 +74,11 @@ public class TroopPlacement : MonoBehaviour
         }
     }
 
+    public int GetSpawnsLeft()
+    {
+        return maxTurnSpawn - currentTroopsSpawned;
+    }
+
     public bool DecreaseTroopCount(TroopType type)
     {
         switch (type)
