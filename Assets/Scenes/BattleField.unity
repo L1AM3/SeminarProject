@@ -3694,11 +3694,11 @@ PrefabInstance:
       objectReference: {fileID: 1252212275243530870}
     - target: {fileID: 3035551326156578878, guid: 6bb2a79c821bf734ebc1a1ba6b7be020, type: 3}
       propertyPath: HomeBaseHealth
-      value: 25
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3035551326156578878, guid: 6bb2a79c821bf734ebc1a1ba6b7be020, type: 3}
       propertyPath: EnemyBaseHealth
-      value: 1
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3035551326156578878, guid: 6bb2a79c821bf734ebc1a1ba6b7be020, type: 3}
       propertyPath: troopButtons.Array.size
@@ -3742,19 +3742,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4553596854879074369, guid: 6bb2a79c821bf734ebc1a1ba6b7be020, type: 3}
       propertyPath: AdditionArcher
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4553596854879074369, guid: 6bb2a79c821bf734ebc1a1ba6b7be020, type: 3}
       propertyPath: DivisionDogFighter
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4553596854879074369, guid: 6bb2a79c821bf734ebc1a1ba6b7be020, type: 3}
       propertyPath: MultiplicationMarine
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4553596854879074369, guid: 6bb2a79c821bf734ebc1a1ba6b7be020, type: 3}
       propertyPath: SubtractionSwordsman
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
