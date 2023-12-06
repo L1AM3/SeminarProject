@@ -54,6 +54,7 @@ public static class TroopManager
 
         DeactivateDamageHighlight();
 
+        AudioManager.instance.SelectSFX();
         troop.SetTroopSelected();
     }
 

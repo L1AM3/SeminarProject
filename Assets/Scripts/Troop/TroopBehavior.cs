@@ -166,6 +166,7 @@ public class TroopBehavior : MonoBehaviour
                 SetTroopSelected();
             }
 
+            AudioManager.instance.MoveSFX();
             currentMoveCount++;
 
             if (currentMoveCount >= TroopInfo.Movement)
@@ -260,6 +261,7 @@ public class TroopBehavior : MonoBehaviour
     {
         bool isNegative = TroopInfo.Damage < 0;
 
+        AudioManager.instance.DamageTroopSFX();
         TroopInfo.Damage = Mathf.Abs(TroopInfo.Damage) - Mathf.Abs(damage);
 
         GetComponent<SpriteRenderer>().color = Color.red;

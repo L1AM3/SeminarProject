@@ -6,6 +6,18 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
 
+    private void Awake()
+    {
+        if (instance == null)
+            instance = this;
+        else
+            Destroy(gameObject);
+
+
+        DontDestroyOnLoad(gameObject);
+     
+    }
+
     [Header("Audio Clips")]
     public AudioClip ButtonPress;
     public AudioClip DamageBase;

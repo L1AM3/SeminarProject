@@ -152,6 +152,7 @@ public class TroopPlacement : MonoBehaviour
         troopBehave.Placement = this;
         troopBehave.SetType((TroopType) prefabIndex);
 
+        //AudioManager.instanceummyeah
         troops.Add(troopBehave);
         currentTroopsSpawned++;
     }

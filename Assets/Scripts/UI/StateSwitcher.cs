@@ -24,6 +24,7 @@ public class StateSwitcher : MonoBehaviour
 
     public void EndPlacementPhase()
     {
+        AudioManager.instance.ButtonPressSFX();
         GameManager.Instance.SetIsTroopPlacing(false);
         PlacementButton.gameObject.SetActive(false);
         EndTurn.gameObject.SetActive(true);
@@ -31,6 +32,7 @@ public class StateSwitcher : MonoBehaviour
 
     public void EndMovementPhase()
     {
+        AudioManager.instance.ButtonPressSFX();
         EndTurn.gameObject.SetActive(false);
         TroopManager.InvokeTroopTurnFinished();
     }

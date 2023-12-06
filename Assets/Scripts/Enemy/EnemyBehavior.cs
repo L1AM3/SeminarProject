@@ -20,6 +20,7 @@ public class EnemyBehavior : MonoBehaviour
 
     public void DebuffDivHealth(int debuffval)
     {
+        AudioManager.instance.DamageEnemySFX();
         bool isNegative = EnemyInfo.Damage < 0;
 
         Debug.Assert(debuffval > 0);
@@ -37,6 +38,7 @@ public class EnemyBehavior : MonoBehaviour
 
     public bool AlterDamage(int damage)
     {
+        AudioManager.instance.DamageEnemySFX();
         EnemyInfo.Damage += damage;
 
         GetComponent<SpriteRenderer>().color = Color.red;
@@ -137,6 +139,7 @@ public class EnemyBehavior : MonoBehaviour
 
             if (IsHomeBase(theFuckingTile)) { AtHomeBase(); }
 
+            AudioManager.instance.MoveSFX();
             AttackTarget();
         }
     }

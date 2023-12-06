@@ -615,11 +615,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 198907882}
   m_CullTransparentMesh: 1
---- !u!1 &235439506 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 347948641232801456, guid: 6bb2a79c821bf734ebc1a1ba6b7be020, type: 3}
-  m_PrefabInstance: {fileID: 1252212275243530867}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &251064453
 GameObject:
   m_ObjectHideFlags: 0
@@ -3848,17 +3843,14 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 347948641232801456, guid: 6bb2a79c821bf734ebc1a1ba6b7be020, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1252212275243530874}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bb2a79c821bf734ebc1a1ba6b7be020, type: 3}
 --- !u!114 &1252212275243530869 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 25587345918118996, guid: 6bb2a79c821bf734ebc1a1ba6b7be020, type: 3}
   m_PrefabInstance: {fileID: 1252212275243530867}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 235439506}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b2a31baaec36e80439d314e282bb4366, type: 3}
@@ -3869,36 +3861,12 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3791185189237740903, guid: 6bb2a79c821bf734ebc1a1ba6b7be020, type: 3}
   m_PrefabInstance: {fileID: 1252212275243530867}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 235439506}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 43b4c52d6aca79241ba6615dbe2ab72f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1252212275243530874
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 235439506}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 660fd0d4ba473544d9f923a4623d8dba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ButtonPress: {fileID: 8300000, guid: c06cea1250ba0984795382cd2f619e5b, type: 3}
-  DamageBase: {fileID: 8300000, guid: 4347d49ee0e9d5748bc1eb6b350a25d3, type: 3}
-  DamageTroop: {fileID: 8300000, guid: 6e5f7c078c4d973469644aa1dba6ab94, type: 3}
-  DamageEnemy: {fileID: 8300000, guid: e1adedd3e51be184e986096d79cc9f83, type: 3}
-  Move: {fileID: 8300000, guid: fa2a245f4a342be48ab10be5d37c5307, type: 3}
-  Select: {fileID: 8300000, guid: 2d57db5a38991714a90875c340c0fefd, type: 3}
-  Clicking: {fileID: 1252212275243530875}
---- !u!82 &1252212275243530875 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 3938044215175658318, guid: 6bb2a79c821bf734ebc1a1ba6b7be020, type: 3}
-  m_PrefabInstance: {fileID: 1252212275243530867}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7111928081517628450
 PrefabInstance:
   m_ObjectHideFlags: 0

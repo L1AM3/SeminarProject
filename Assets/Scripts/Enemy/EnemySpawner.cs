@@ -110,6 +110,8 @@ public class EnemySpawner : MonoBehaviour
             return false;
         }
 
+        //AudioManager.instance.blah
+
         localEnemy.SetTarget(interestingTings[UnityEngine.Random.Range(0, interestingTings.Count)]);
         localEnemy.SetRandomDamage();
         spawnedEnemies.Add(localEnemy);

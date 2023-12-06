@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
 
     public void DamageHomebase(int damage)
     {
+        AudioManager.instance.DamageBaseSFX();
         HomeBaseHealth -= Mathf.Abs(damage);
 
         HomeBaseDamaged?.Invoke(damage);
@@ -53,6 +54,7 @@ public class GameManager : MonoBehaviour
 
     public void DamageEnemybase(int damage)
     {
+        AudioManager.instance.DamageBaseSFX();
         EnemyBaseHealth -= Math.Abs(damage);
 
         EnemyBaseDamaged?.Invoke(damage);
