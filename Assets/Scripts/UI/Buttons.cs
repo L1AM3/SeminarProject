@@ -20,6 +20,11 @@ public class Buttons : MonoBehaviour
         SceneManager.LoadScene("LevelSelection");
     }
 
+    public void Tutorial()
+    {
+        SceneManager.LoadScene("Tutorial");
+    }
+
     public void Quit()
     {
         Application.Quit();
