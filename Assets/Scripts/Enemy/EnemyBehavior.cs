@@ -20,9 +20,19 @@ public class EnemyBehavior : MonoBehaviour
 
     public void DebuffDivHealth(int debuffval)
     {
+        bool isNegative = EnemyInfo.Damage < 0;
+
         Debug.Assert(debuffval > 0);
-        float newHealth = (float)EnemyInfo.Damage / debuffval;
+        
+        float newHealth = (float)Mathf.Abs(EnemyInfo.Damage) / debuffval;
+
         EnemyInfo.Damage = (int)Mathf.Ceil(newHealth);
+
+        if (isNegative)
+        {
+            EnemyInfo.Damage = -EnemyInfo.Damage;
+        }
+
     }
 
     public bool AlterDamage(int damage)

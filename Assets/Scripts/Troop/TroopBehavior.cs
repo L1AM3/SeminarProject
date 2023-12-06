@@ -8,6 +8,7 @@ public class TroopBehavior : MonoBehaviour
 {
     [HideInInspector] public TroopPlacement Placement;
     [HideInInspector] public GridManager Grid;
+    [HideInInspector] public EnemyBehavior EnemyBehave;
     public TroopData TroopInfo;
     [HideInInspector] public Vector2Int TroopGridsCoord;
     [HideInInspector] public bool IsTroopSelected = false;
@@ -181,7 +182,6 @@ public class TroopBehavior : MonoBehaviour
             for (int y = -debuffRadius; y <= debuffRadius; y++)
             {
                 EnemyBehavior enemyBehavior = EnemyOnTile(Grid.GetTileFromDictionary(originTile.gridCoords + new Vector2Int(x, y)));
-                //TroopBehavior troopBehavior = TroopOnTile(Grid.GetTileFromDictionary(originTile.gridCoords + new Vector2Int(x, y)));
 
                 if (Mathf.Abs(x) + Mathf.Abs(y) <= debuffRadius)
                 {

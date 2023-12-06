@@ -40,8 +40,11 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - water
   m_SortingLayers:
+  - name: Water
+    uniqueID: 1005885041
+    locked: 0
   - name: Tile
     uniqueID: 3491924613
     locked: 0
