@@ -446,6 +446,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Placement: {fileID: 0}
   Grid: {fileID: 0}
+  EnemyBehave: {fileID: 0}
   TroopInfo:
     Damage: -1
     Movement: 5
