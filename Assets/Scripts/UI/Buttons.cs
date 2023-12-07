@@ -25,6 +25,11 @@ public class Buttons : MonoBehaviour
         SceneManager.LoadScene("Tutorial");
     }
 
+    public void Credits()
+    {
+        SceneManager.LoadScene("Credits");
+    }
+
     public void Quit()
     {
         Application.Quit();

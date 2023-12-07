@@ -25,6 +25,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip DamageEnemy;
     public AudioClip Move;
     public AudioClip Select;
+    public AudioClip TroopSpawn;
+    public AudioClip EnemySpawn;
 
     //[Header("Audio Sources")]
     public AudioSource Clicking;
@@ -78,6 +80,22 @@ public class AudioManager : MonoBehaviour
         if (Clicking != null)
         {
             Clicking.PlayOneShot(DamageBase, 1.0f);
+        }
+    }
+
+    public void EnemySpawnSFX()
+    {
+        if (Clicking != null)
+        {
+            Clicking.PlayOneShot(EnemySpawn, 1.0f);
+        }
+    }
+
+    public void TroopSpawnSFX()
+    {
+        if (Clicking != null)
+        {
+            Clicking.PlayOneShot(TroopSpawn, 1.0f);
         }
     }
 }

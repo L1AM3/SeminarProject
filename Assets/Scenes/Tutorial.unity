@@ -1874,7 +1874,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &499275430
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6184,7 +6184,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Only 5 troops can be placed a turn
+  m_text: Only 3  troops can be placed a turn
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8c29127d60597ab48a7a51efd6e3abe7, type: 2}
   m_sharedMaterial: {fileID: 8742269406023106848, guid: 8c29127d60597ab48a7a51efd6e3abe7, type: 2}
@@ -7603,7 +7603,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2060315853
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7829,7 +7829,7 @@ MonoBehaviour:
 
     /2 Debuff
 
-    7 Moves
+    6 Moves
 
 '
   m_isRightToLeft: 0
