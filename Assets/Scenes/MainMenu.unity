@@ -1371,7 +1371,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1471,8 +1471,8 @@ MonoBehaviour:
   Level1Music: {fileID: 8300000, guid: c6e48f9b7fac7e7418bc73a886edad9c, type: 3}
   Level2Music: {fileID: 8300000, guid: 3625d31daef59454fa4db123156f50a9, type: 3}
   Level3Music: {fileID: 8300000, guid: db9150ff83baead4eb587ca7429cb7e2, type: 3}
-  LoseMenuMusic: {fileID: 8300000, guid: 9923ac9687cc7674bb7436e46b43cf65, type: 3}
-  WinMenuMusic: {fileID: 8300000, guid: 9dd904b1c309dfc438eb166a048c4d5a, type: 3}
+  LoseMenuMusic: {fileID: 8300000, guid: 44175b5d24d6e8248baedf3d3ec8c00d, type: 3}
+  WinMenuMusic: {fileID: 8300000, guid: 8c72c86f2b0eb6b43b4be642b4f78602, type: 3}
   MusicPlayer: {fileID: 1221821790}
 --- !u!1 &1397351502
 GameObject:

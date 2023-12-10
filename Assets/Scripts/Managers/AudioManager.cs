@@ -39,7 +39,7 @@ public class AudioManager : MonoBehaviour
     {
         if (Clicking != null)
         {
-            Clicking.PlayOneShot(ButtonPress, 1.0f);
+            Clicking.PlayOneShot(ButtonPress, 0.1f);
         }
     }
 
@@ -47,7 +47,7 @@ public class AudioManager : MonoBehaviour
     {
         if (Clicking != null)
         {
-            Clicking.PlayOneShot(Select, 1.0f);
+            Clicking.PlayOneShot(Select, 0.25f);
         }
     }
 
@@ -55,7 +55,7 @@ public class AudioManager : MonoBehaviour
     {
         if (Clicking != null)
         {
-            Clicking.PlayOneShot(Move, 1.0f);
+            Clicking.PlayOneShot(Move, 0.25f);
         }
     }
 
@@ -63,7 +63,7 @@ public class AudioManager : MonoBehaviour
     {
         if (Clicking != null)
         {
-            Clicking.PlayOneShot(DamageTroop, 1.0f);
+            Clicking.PlayOneShot(DamageTroop, 0.25f);
         }
     }
 
@@ -71,7 +71,7 @@ public class AudioManager : MonoBehaviour
     {
         if (Clicking != null)
         {
-            Clicking.PlayOneShot(DamageEnemy, 1.0f);
+            Clicking.PlayOneShot(DamageEnemy, 0.25f);
         }
     }
 
@@ -79,7 +79,7 @@ public class AudioManager : MonoBehaviour
     {
         if (Clicking != null)
         {
-            Clicking.PlayOneShot(DamageBase, 1.0f);
+            Clicking.PlayOneShot(DamageBase, 0.5f);
         }
     }
 
@@ -87,7 +87,7 @@ public class AudioManager : MonoBehaviour
     {
         if (Clicking != null)
         {
-            Clicking.PlayOneShot(EnemySpawn, 1.0f);
+            Clicking.PlayOneShot(EnemySpawn, 0.15f);
         }
     }
 
@@ -95,7 +95,7 @@ public class AudioManager : MonoBehaviour
     {
         if (Clicking != null)
         {
-            Clicking.PlayOneShot(TroopSpawn, 1.0f);
+            Clicking.PlayOneShot(TroopSpawn, 0.15f);
         }
     }
 }
