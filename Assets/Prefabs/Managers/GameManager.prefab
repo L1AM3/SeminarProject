@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3791185189237740903}
   - component: {fileID: 3035551326156578878}
   - component: {fileID: 4553596854879074369}
+  - component: {fileID: 2486854262853231647}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -104,3 +105,16 @@ MonoBehaviour:
   SubtractionSwordsman: 5
   MultiplicationMarine: 1
   DivisionDogFighter: 1
+--- !u!114 &2486854262853231647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 347948641232801456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2daea3445e9dff45ae5bd1cab07c87d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pausingMenu: {fileID: 0}
